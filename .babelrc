@@ -1,4 +1,11 @@
 {
-    "presets": ["@parcel/babel-preset-env"],
-    "plugins": ["@parcel/babel-plugin-transform-runtime", "@babel/plugin-syntax-jsx", "babel-plugin-css-in-js"]
-    }
+    
+"devDependencies": ["@parcel/babel-preset-env","@parcel/babel-plugin-transform-runtime","@babel/plugin-syntax-jsx babel-plugin-css-in-js babel-core"]  
+
+}
+
+    
+
+
+    
+    
