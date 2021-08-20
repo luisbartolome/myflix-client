@@ -1,7 +1,7 @@
 {
     
 "devDependencies": ["@parcel/babel-preset-env","@parcel/babel-plugin-transform-runtime","@babel/plugin-syntax-jsx babel-plugin-css-in-js babel-core"], 
-"presets": ["es2015", "react","@babel/preset-env", "@babel/preset-typescript"]
+"presets": ["env"] 
   }
     
 
