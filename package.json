@@ -1,28 +1,32 @@
 {
-  "name": "myflix-client",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/luisbartolome/myFlix-client.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/luisbartolome/myFlix-client/issues"
-  },
-  "homepage": "https://github.com/luisbartolome/myFlix-client#readme",
-  "devDependencies": {
-    "@babel/plugin-syntax-jsx": "^7.14.5",
-    "@parcel/babel-plugin-transform-runtime": "^2.0.0-nightly.1823",
-    "@parcel/babel-preset-env": "^2.0.0-alpha.3",
-    "babel-core": "^6.26.3",
-    "babel-plugin-css-in-js": "^1.5.1",
-    "babel-preset-env": "^1.7.0"
-  }
+    "name": "myflix-client",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "dev": "parcel src/index.html",
+        "build": "parcel build src/index.html",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/luisbartolome/myFlix-client.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/luisbartolome/myFlix-client/issues"
+    },
+    "homepage": "https://github.com/luisbartolome/myFlix-client#readme",
+    "devDependencies": {
+        "@babel/plugin-syntax-jsx": "^7.14.5",
+        "@parcel/babel-plugin-transform-runtime": "^2.0.0-nightly.1823",
+        "@parcel/babel-preset-env": "^2.0.0-alpha.3",
+        "babel-core": "^6.26.3",
+        "babel-plugin-css-in-js": "^1.5.1",
+        "babel-preset-env": "^1.7.0",
+        "parcel-bundler": "^1.12.5"
+    },
+    "dependencies": {},
+    "description": ""
 }
