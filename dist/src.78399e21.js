@@ -32686,6 +32686,8 @@ exports.MovieView = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -32757,7 +32759,25 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.MovieView = MovieView;
-},{"react":"../../../../node_modules/react/index.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+MovieView.propTypes = {
+  movie: _propTypes.default.shape({
+    Title: _propTypes.default.string.isRequired // Description: PropTypes.string.isRequired,
+    // ImagePath: PropTypes.string.isRequired,
+    // Genre: PropTypes.shape({
+    //   Name: PropTypes.string.isRequired,
+    //   Description: PropTypes.string.isRequired,
+    // }),
+    // Director: PropTypes.shape({
+    //   Name: PropTypes.string.isRequired,
+    //   Bio: PropTypes.string.isRequired,
+    //   Birth: PropTypes.string,
+    //   Death: PropTypes.string,
+    // }),
+
+  }).isRequired,
+  onBackClick: _propTypes.default.func.isRequired
+};
+},{"react":"../../../../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32827,7 +32847,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      _axios.default.get('https://api-myflix.herokuapp.com/movies').then(function (response) {
+      _axios.default.get('https://backend-myflix1.herokuapp.com/movies').then(function (response) {
         _this2.setState({
           movies: response.data
         });
