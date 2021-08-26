@@ -7,7 +7,7 @@ User Stories
 
 ● As a user, I want to be able to create a profile so I can save data about my favorite movies.
 
-Built With
+Built With:
 html
 scss
 JavaScript
