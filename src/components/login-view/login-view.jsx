@@ -40,12 +40,18 @@ export function LoginView(props) {
       <button type="submit" onClick={handleSubmit}>
         Submit
       </button>
+      <button type="register link" onClick={newUser}>
+        Register
+      </button>
     </form>
   );
 }
 
-LoginView.propType = {
-  username: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.func.isRequired
+LoginView.propTypes = {
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+  }),
+  handleSubmit: PropTypes.func.isRequired,
+  onLoggedIn: PropTypes.func.isRequired,
 };

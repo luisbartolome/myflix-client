@@ -11,7 +11,7 @@ export function RegistrationView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password,confirmPassword, email, birthday);
-    props.onRegister(null);
+    props.onRegister(username);
   };
 
   return (
@@ -20,6 +20,8 @@ export function RegistrationView(props) {
         Username:
         <input
           type="text"
+          placeholder="Enter Username"
+          required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -29,19 +31,26 @@ export function RegistrationView(props) {
         Password:
         <input
           type="password"
+          placeholder="Password"
+          required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
       <label>
             Confirm password: 
-            <input type="tex" value={confirmPassword} onChange={e=> setConfirmPassword(e.target.value)}/>
+            <input type="text" 
+            placeholder="Re-write Password"
+            required
+            value={confirmPassword} onChange={e=> setConfirmPassword(e.target.value)}/>
       </label>
       
       <label>
         Email:
         <input
           type="email"
+          placeholder="name@example.com"
+          required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -51,12 +60,14 @@ export function RegistrationView(props) {
         Birthday:
         <input
           type="birthday"
+          placeholder="dd/mm/aaaa"
+          required
           value={birthday}
           onChange={(e) => setBirthday(e.target.value)}
         />
       </label>
 
-      <button type="button" onClick={handleSubmit}>
+      <button type="submit" onClick={username}>
         Submit
       </button>
     </form>
@@ -64,10 +75,5 @@ export function RegistrationView(props) {
 }
 
 RegistrationView.propTypes = {
-  username: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  confirmPassword: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  birthday: PropTypes.string.isRequired,
-  handleSubmit: PropTypes.func.isRequired
+  onRegister: PropTypes.func.isRequired,
 };
