@@ -32516,7 +32516,6 @@ LoginView.propTypes = {
     Username: _propTypes.default.string.isRequired,
     Password: _propTypes.default.string.isRequired
   }),
-  handleSubmit: _propTypes.default.func.isRequired,
   onLoggedIn: _propTypes.default.func.isRequired
 };
 },{"react":"../../../../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js"}],"components/registration-view/registration-view.jsx":[function(require,module,exports) {

@@ -52,6 +52,5 @@ LoginView.propTypes = {
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
   }),
-  handleSubmit: PropTypes.func.isRequired,
   onLoggedIn: PropTypes.func.isRequired,
 };
