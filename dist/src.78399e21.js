@@ -32505,13 +32505,19 @@ function LoginView(props) {
   })), /*#__PURE__*/_react.default.createElement("button", {
     type: "submit",
     onClick: handleSubmit
-  }, "Submit"));
+  }, "Submit"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "register link",
+    onClick: newUser
+  }, "Register"));
 }
 
-LoginView.propType = {
-  username: _propTypes.default.string.isRequired,
-  password: _propTypes.default.string.isRequired,
-  handleSubmit: _propTypes.default.func.isRequired
+LoginView.propTypes = {
+  user: _propTypes.default.shape({
+    Username: _propTypes.default.string.isRequired,
+    Password: _propTypes.default.string.isRequired
+  }),
+  handleSubmit: _propTypes.default.func.isRequired,
+  onLoggedIn: _propTypes.default.func.isRequired
 };
 },{"react":"../../../../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js"}],"components/registration-view/registration-view.jsx":[function(require,module,exports) {
 "use strict";
@@ -32572,52 +32578,57 @@ function RegistrationView(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     console.log(username, password, confirmPassword, email, birthday);
-    props.onRegister(null);
+    props.onRegister(username);
   };
 
   return /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("label", null, "Username:", /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
+    placeholder: "Enter Username",
+    required: true,
     value: username,
     onChange: function onChange(e) {
       return setUsername(e.target.value);
     }
   })), /*#__PURE__*/_react.default.createElement("label", null, "Password:", /*#__PURE__*/_react.default.createElement("input", {
     type: "password",
+    placeholder: "Password",
+    required: true,
     value: password,
     onChange: function onChange(e) {
       return setPassword(e.target.value);
     }
   })), /*#__PURE__*/_react.default.createElement("label", null, "Confirm password:", /*#__PURE__*/_react.default.createElement("input", {
-    type: "tex",
+    type: "text",
+    placeholder: "Re-write Password",
+    required: true,
     value: confirmPassword,
     onChange: function onChange(e) {
       return setConfirmPassword(e.target.value);
     }
   })), /*#__PURE__*/_react.default.createElement("label", null, "Email:", /*#__PURE__*/_react.default.createElement("input", {
     type: "email",
+    placeholder: "name@example.com",
+    required: true,
     value: email,
     onChange: function onChange(e) {
       return setEmail(e.target.value);
     }
   })), /*#__PURE__*/_react.default.createElement("label", null, "Birthday:", /*#__PURE__*/_react.default.createElement("input", {
     type: "birthday",
+    placeholder: "dd/mm/aaaa",
+    required: true,
     value: birthday,
     onChange: function onChange(e) {
       return setBirthday(e.target.value);
     }
   })), /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    onClick: handleSubmit
+    type: "submit",
+    onClick: username
   }, "Submit"));
 }
 
 RegistrationView.propTypes = {
-  username: _propTypes.default.string.isRequired,
-  password: _propTypes.default.string.isRequired,
-  confirmPassword: _propTypes.default.string.isRequired,
-  email: _propTypes.default.string.isRequired,
-  birthday: _propTypes.default.string.isRequired,
-  handleSubmit: _propTypes.default.func.isRequired
+  onRegister: _propTypes.default.func.isRequired
 };
 },{"react":"../../../../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js"}],"components/movie-card/movie-card.jsx":[function(require,module,exports) {
 "use strict";
