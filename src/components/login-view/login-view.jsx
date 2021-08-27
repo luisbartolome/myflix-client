@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import PropTypes from 'prop-types';
 
 export function LoginView(props) {
   const [username, setUsername] = useState('');
@@ -11,6 +11,12 @@ export function LoginView(props) {
     /* Send a request to the server for authentication */
     /* then call props.onLoggedIn(username) */
     props.onLoggedIn(username);
+  };
+  
+  const newUser = (e) =>{
+    e.preventDefault();
+    console.log(username, password);
+      props.onLoggedIn('newUser');
   };
 
   return (
@@ -38,3 +44,8 @@ export function LoginView(props) {
   );
 }
 
+LoginView.propType = {
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired
+};
