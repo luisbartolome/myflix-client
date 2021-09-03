@@ -34343,7 +34343,7 @@ function RegistrationView(props) {
 
 RegistrationView.propTypes = {
   register: _propTypes.default.shape({
-    Username: _propTypes.default.string.isRequired,
+    username: _propTypes.default.string.isRequired,
     Password: _propTypes.default.string.isRequired,
     Email: _propTypes.default.string.isRequired,
     Birthday: _propTypes.default.instanceOf(Date).isRequired
@@ -34648,7 +34648,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     _this.state = {
       movies: [],
       selectedMovie: null,
-      user: null
+      user: null,
+      register: null
     };
     return _this;
   }
@@ -34701,17 +34702,18 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           movies = _this$state.movies,
           selectedMovie = _this$state.selectedMovie,
-          user = _this$state.user;
-      if (user === 'newUser') return /*#__PURE__*/_react.default.createElement(_registrationView.RegistrationView, {
-        onRegistration: function onRegistration(user) {
-          return _this3.onRegistration(user);
-        }
-      });
+          user = _this$state.user,
+          register = _this$state.register;
       /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
 
       if (!user) return /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
         onLoggedIn: function onLoggedIn(user) {
           return _this3.onLoggedIn(user);
+        }
+      });
+      if (!register) return /*#__PURE__*/_react.default.createElement(_registrationView.RegistrationView, {
+        onRegister: function onRegister(register) {
+          return _this3.onRegister(register);
         }
       }); // Before the movies have been loaded
 
@@ -34892,7 +34894,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "25554" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "32861" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
