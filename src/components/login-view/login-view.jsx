@@ -20,41 +20,36 @@ export function LoginView(props) {
   const newUser = (e) =>{
     e.preventDefault();
     console.log(username, password);
-      props.onLoggedIn('newUser');
+      props.onLoggedIn('newUser')
   };
 
   return (
-    <div className="center">
-      <h1 className="title">myFlix</h1>
-      <Form>
-        <Form.Group controlId="formUsername">
-          <Form.Label>Username:</Form.Label>
-          <Form.Control
-            type="text"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </Form.Group>
-
-        <Form.Group controlId="formPassword">
-          <Form.Label>Password:</Form.Label>
-          <Form.Control
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
+    <form>
+      <Form.Group controlId="formUsername">
+        <Form.Label>
+          Username:
+        </Form.Label>
+        <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} />
+      </Form.Group>
+      <Form.Group controlId="formPassword">
+        <Form.Label>
+        Password:
+        </Form.Label>
+        <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
       
+      </Form.Group>
+
       <button type="submit" onClick={handleSubmit}>
         Submit
       </button>
       <button type="register link" onClick={newUser}>
         Register
       </button>
-    </Form>
-    </div>
+      </form>
   );
 }
 
-LoginView.propTypes = {
+LoginView.propType = {
   user: PropTypes.shape({
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
