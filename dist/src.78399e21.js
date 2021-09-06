@@ -34032,7 +34032,9 @@ function LoginView(props) {
     props.onLoggedIn('newUser');
   };
 
-  return /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("h1", {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "center"
+  }, /*#__PURE__*/_react.default.createElement("h1", {
     className: "title"
   }, "myFlix"), /*#__PURE__*/_react.default.createElement(_Form.default.Group, {
     controlId: "formUsername"
@@ -34050,10 +34052,16 @@ function LoginView(props) {
     onChange: function onChange(e) {
       return setPassword(e.target.value);
     }
-  })), /*#__PURE__*/_react.default.createElement("button", {
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "middle"
+  }), /*#__PURE__*/_react.default.createElement(_Button.default, {
+    className: "m-3",
+    variant: "info",
     type: "submit",
     onClick: handleSubmit
-  }, "Submit"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Login"), /*#__PURE__*/_react.default.createElement(_Button.default, {
+    className: "m-3",
+    variant: "info",
     type: "register link",
     onClick: newUser
   }, "Register here"));
@@ -34592,8 +34600,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "onRegister",
-    value: function onRegister(register) {
+    key: "onRegistration",
+    value: function onRegistration(register) {
       this.setState({
         register: register
       });

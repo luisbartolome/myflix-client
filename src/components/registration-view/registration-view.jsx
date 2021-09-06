@@ -79,4 +79,5 @@ RegistrationView.propTypes = {
     email: PropTypes.string.isRequired,
     Birthday: PropTypes.instanceOf(Date).isRequired,
     handleSubmit: PropTypes.func.isRequired
-  };
+   };
+   

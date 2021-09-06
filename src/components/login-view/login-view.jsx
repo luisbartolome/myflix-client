@@ -26,7 +26,7 @@ export function LoginView(props) {
   };
 
   return (
-    <form>
+    <div className="center">
       <h1 className="title">myFlix</h1>
       <Form.Group controlId="formUsername">
         <Form.Label>
@@ -42,16 +42,19 @@ export function LoginView(props) {
       
       </Form.Group>
 
-      <button type="submit" onClick={handleSubmit}>
-        Submit
-      </button>
-      <button type="register link" onClick={newUser}>
+      <div className="middle"></div>
+      <Button className="m-3" variant="info" type="submit" onClick={handleSubmit}
+      >
+        Login
+      </Button>
+      < Button className="m-3" variant="info" type="register link" onClick={newUser}>
         Register here
-      </button>
-      </form>
+      </Button>
+    </div>
+  
   );
 }
-
+  
 LoginView.propType = {
   user: PropTypes.shape({
     Username: PropTypes.string.isRequired,
