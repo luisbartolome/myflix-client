@@ -27,6 +27,7 @@ export function LoginView(props) {
 
   return (
     <form>
+      <h1 className="title">myFlix</h1>
       <Form.Group controlId="formUsername">
         <Form.Label>
           Username:

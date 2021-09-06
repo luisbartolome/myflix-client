@@ -34032,7 +34032,9 @@ function LoginView(props) {
     props.onLoggedIn('newUser');
   };
 
-  return /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement(_Form.default.Group, {
+  return /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("h1", {
+    className: "title"
+  }, "myFlix"), /*#__PURE__*/_react.default.createElement(_Form.default.Group, {
     controlId: "formUsername"
   }, /*#__PURE__*/_react.default.createElement(_Form.default.Label, null, "Username:"), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     type: "text",
@@ -34798,7 +34800,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1044" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1052" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
