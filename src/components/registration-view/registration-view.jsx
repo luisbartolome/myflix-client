@@ -8,15 +8,14 @@ import Col from 'react-bootstrap/Col';
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState('');
-  const [confirmPassword, setConfirmPassword ] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
 
-  const handleRegister = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password,confirmPassword, email, birthday);
-    props.onRegister(username);
+    props.onRegister(null);
   };
 
   return (
@@ -60,7 +59,7 @@ export function RegistrationView(props) {
           />
         </Form.Group>
         <div className="middle">
-          <Button type="submit" variant="dark" onClick={handleRegister}>
+          <Button type="submit" variant="dark" onClick={handleSubmit}>
             Register
           </Button>
         </div>
@@ -79,4 +78,5 @@ RegistrationView.propTypes = {
     Birthday: PropTypes.instanceOf(Date).isRequired,
   }),
   onRegister: PropTypes.func,
+  handleSubmit: PropTypes.func.isRequired
 };
