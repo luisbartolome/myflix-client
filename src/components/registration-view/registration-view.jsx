@@ -9,8 +9,9 @@ import Col from 'react-bootstrap/Col';
 export function RegistrationView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword ] = useState('');
   const [email, setEmail] = useState('');
-  const [birthday, setBirthday] = useState('');
+  const [Birthday, setBirthday] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -73,8 +74,9 @@ export function RegistrationView(props) {
 RegistrationView.propTypes = {
   register: PropTypes.shape({
     username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    confirmPassword: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
     Birthday: PropTypes.instanceOf(Date).isRequired,
   }),
   onRegister: PropTypes.func,
