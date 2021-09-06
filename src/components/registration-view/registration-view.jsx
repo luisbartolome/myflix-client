@@ -15,8 +15,8 @@ export function RegistrationView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password,confirmPassword, email, birthday);
-    props.onRegister(null);
+    console.log(username, password,confirmPassword, email, Birthday);
+    props.onRegistration(username);
   };
 
   return (
@@ -54,7 +54,7 @@ export function RegistrationView(props) {
           <Form.Label>Date of Birth:</Form.Label>
           <Form.Control
             type="date"
-            value={birthday}
+            value={Birthday}
             placeholder="Enter your Birthday"
             onChange={(e) => setBirthday(e.target.value)}
           />
@@ -72,13 +72,11 @@ export function RegistrationView(props) {
 
 
 RegistrationView.propTypes = {
-  register: PropTypes.shape({
+
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
     confirmPassword: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     Birthday: PropTypes.instanceOf(Date).isRequired,
-  }),
-  onRegister: PropTypes.func,
-  handleSubmit: PropTypes.func.isRequired
-};
+    handleSubmit: PropTypes.func.isRequired
+  };

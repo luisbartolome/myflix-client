@@ -34193,8 +34193,8 @@ function RegistrationView(props) {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    console.log(username, password, confirmPassword, email, birthday);
-    props.onRegister(null);
+    console.log(username, password, confirmPassword, email, Birthday);
+    props.onRegistration(username);
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -34232,7 +34232,7 @@ function RegistrationView(props) {
     controlId: "formBirthday"
   }, /*#__PURE__*/_react.default.createElement(_Form.default.Label, null, "Date of Birth:"), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     type: "date",
-    value: birthday,
+    value: Birthday,
     placeholder: "Enter your Birthday",
     onChange: function onChange(e) {
       return setBirthday(e.target.value);
@@ -34247,14 +34247,11 @@ function RegistrationView(props) {
 }
 
 RegistrationView.propTypes = {
-  register: _propTypes.default.shape({
-    username: _propTypes.default.string.isRequired,
-    password: _propTypes.default.string.isRequired,
-    confirmPassword: _propTypes.default.string.isRequired,
-    email: _propTypes.default.string.isRequired,
-    Birthday: _propTypes.default.instanceOf(Date).isRequired
-  }),
-  onRegister: _propTypes.default.func,
+  username: _propTypes.default.string.isRequired,
+  password: _propTypes.default.string.isRequired,
+  confirmPassword: _propTypes.default.string.isRequired,
+  email: _propTypes.default.string.isRequired,
+  Birthday: _propTypes.default.instanceOf(Date).isRequired,
   handleSubmit: _propTypes.default.func.isRequired
 };
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js"}],"components/movie-card/movie-card.scss":[function(require,module,exports) {
@@ -34800,7 +34797,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1052" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "10778" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
