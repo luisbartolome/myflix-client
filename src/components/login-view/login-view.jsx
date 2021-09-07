@@ -47,7 +47,7 @@ export function LoginView(props) {
       >
         Login
       </Button>
-      < Button className="m-3" variant="info" type="register link" onClick={newUser}>
+      < Button className="m-3" variant="info" type="submit" onClick={newUser}>
         Register here
       </Button>
     </div>
@@ -56,9 +56,7 @@ export function LoginView(props) {
 }
   
 LoginView.propType = {
-  user: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
-  }),
-  onLoggedIn: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    handleSubmit: PropTypes.func.isRequired
 };
