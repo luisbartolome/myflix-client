@@ -51281,7 +51281,7 @@ function RegistrationView(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     console.log(username, password, confirmPassword, email, Birthday);
-    props.onRegistration(null);
+    props.onRegister(user);
   };
 
   return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
@@ -51795,8 +51795,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "onRegistration",
-    value: function onRegistration(register) {
+    key: "onRegister",
+    value: function onRegister(register) {
       this.setState({
         register: register
       });
@@ -51955,7 +51955,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8870" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1045" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
