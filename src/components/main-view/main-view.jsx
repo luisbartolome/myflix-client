@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
@@ -66,7 +66,7 @@ export class MainView extends React.Component {
   render() {
     const { movies, selectedMovie, user } = this.state;
 
-    if (user === 'newUser') return <RegistrationView onRegistration={user => this.onRegistration(user)}/>
+    if (user === 'newUser') return <RegistrationView onRegistration={user => this.onRegister(user)}/>
        
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;

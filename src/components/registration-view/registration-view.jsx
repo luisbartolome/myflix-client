@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { Link } from "react-router-dom";
 
+import { Router } from 'react-router';
+import { Link } from "react-router-dom";
 import { Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
@@ -128,10 +129,9 @@ export function RegistrationView(props) {
 
       </Row>
       <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button> 
-      <Link to={`/`}>
-        <Button variant="secondary">Back to login</Button>
-      </Link>
-        </Form>
+     
+     <Button variant="secondary" type="submit">Back to login</Button>
+    </Form>
     </Row>
 
     
@@ -142,13 +142,11 @@ export function RegistrationView(props) {
 }
 
 
-
-RegistrationView.propTypes = {
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    confirmPassword: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    Birthday: PropTypes.string.isRequired,
-    handleSubmit: PropTypes.func.isRequired
-   };
-   
+RegistrationView.propType = {
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  confirmPassword: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  birthday: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired
+};
