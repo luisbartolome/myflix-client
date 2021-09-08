@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-import { Router } from 'react-router';
-import { Link } from "react-router-dom";
 import { Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
@@ -20,7 +18,7 @@ export function RegistrationView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password,confirmPassword, email, Birthday);
-    props.onRegister(user);
+    props.onRegistration(null);
   };
 
   return (
