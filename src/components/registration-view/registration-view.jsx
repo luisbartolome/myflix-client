@@ -24,7 +24,8 @@ export function RegistrationView(props) {
   };
 
   return (
-    <Container className="login-view">
+    <Container className="login-view" className="center">
+      <h1 className="title">myFlix</h1>
     <Row >
         <Form className="login was-validated" noValidate >
             <Form.Group  controlId="formUsername">
