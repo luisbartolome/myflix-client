@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 //Components & Styling
 import Button from 'react-bootstrap/Button';
 import './movie-card.scss';
+
 export class MovieCard extends React.Component {
   render() {
     const { movie, onMovieClick } = this.props;
+    
+    
     return (
       <div className="movie-card bg-white m-2 p-2 rounded d-flex flex-column justify-content-between align-items-center">
         <div className="d-flex flex-column align-items-center">

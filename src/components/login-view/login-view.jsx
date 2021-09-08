@@ -25,7 +25,8 @@ export function LoginView(props) {
       props.onLoggedIn('newUser')
   };
 
-  return (
+  return(
+      
     <div className="center">
       <h1 className="title">myFlix</h1>
       <Form.Group controlId="formUsername">

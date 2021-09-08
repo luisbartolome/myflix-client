@@ -8,6 +8,7 @@ export class MovieView extends React.Component {
     const { movie, onBackClick } = this.props;
 
     return (
+      
       <div className="movie-view">
         <div className="movie-poster cent ">
           <img className="poster shadow-lg rounded" src={movie.ImagePath} />

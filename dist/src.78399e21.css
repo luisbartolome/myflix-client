@@ -56,7 +56,12 @@ Form {
 }
 
 .poster {
-  width: 100%;
+  width: 60%;
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+.main-view {
+  margin-top: 100px;
 }
 .body {
   color: #fdfefe;
