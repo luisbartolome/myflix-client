@@ -1,37 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
+import Nav from 'react-bootstrap/Nav';
+import { Container } from 'react-bootstrap';
 
-function Header(props) {
-  const [ username, setUsername ] = useState()
+export function Header(props) {
+  
 
-  const logout = ()=> {
-    props.onLogOut()
-  }
-  console.log(localStorage.user)
-   
-        return (
-        
-           <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="#home">
-            {'My Flix App'}
-            </Navbar.Brand>
-            
-            {localStorage.user && 
-            <div>
-            <button variant="Link" onClick={logout}>Logout</button>
-       
-            <Link to={`/profile`}>
-                    <Button variant="outline-primary">Profile</Button>
-            </Link>
-            <Link to={`/`}>
-                    <Button variant="outline-primary">Main View</Button>
-            </Link>
-            </div>}
-          </Navbar>
-          
-        );
-
+  return(
+      
+    <Navbar bg="dark" variant="dark">
+     <Container>
+    <Navbar.Brand href="#home">My Flix App</Navbar.Brand>
+    <Nav className="me-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+      <Nav.Link href="#features">Profile</Nav.Link>
+      <Nav.Link href="#pricing">Logout</Nav.Link>
+     </Nav>
+     </Container>
+  </Navbar> 
+    
+  
+  );
 }
+
 
 export default Header;
