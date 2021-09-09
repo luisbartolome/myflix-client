@@ -48752,10 +48752,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (movies.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
         className: "main-view"
       });
-      return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
-        fluid: true
-      }, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_Row.default, {
-        className: "main-view justify-content-md-center"
+      return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_Row.default, {
+        className: "main-view"
       }, selectedMovie ? /*#__PURE__*/_react.default.createElement(_Col.default, {
         md: 8
       }, /*#__PURE__*/_react.default.createElement(_movieView.MovieView, {
@@ -48844,9 +48842,7 @@ var MyFlixApplication = /*#__PURE__*/function (_React$Component) {
   _createClass(MyFlixApplication, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
-        fluid: true
-      }, /*#__PURE__*/_react.default.createElement(_mainView.MainView, null));
+      return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_mainView.MainView, null));
     }
   }]);
 
@@ -48885,7 +48881,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1027" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1030" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

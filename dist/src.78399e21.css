@@ -32,13 +32,12 @@ Form {
   }
 }
 .movie-card {
-  width: 200px;
   max-width: 100%;
-  height: 330px;
+  height: 340px;
 }
 
 .movie-card-img {
-  width: 100;
+  width: 100px;
   height: 150px;
   object-fit: cover;
 }
@@ -56,12 +55,13 @@ Form {
 }
 
 .poster {
-  width: 60%;
-  margin-top: 50px;
+  width: 50%;
+  margin-top: 40px;
   margin-bottom: 40px;
 }
 .main-view {
-  margin-top: 100px;
+  margin-top: 40px;
+  margin-left: -10px;
 }
 .body {
   color: #fdfefe;
