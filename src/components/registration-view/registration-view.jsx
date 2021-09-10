@@ -18,7 +18,7 @@ export function RegistrationView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password,confirmPassword, email, Birthday);
-    props.onRegistration(null              );
+    props.onRegistration(null);
   };
 
   return (
@@ -27,7 +27,6 @@ export function RegistrationView(props) {
     <Row >
         <Form className="login was-validated" noValidate >
             <Form.Group  controlId="formUsername">
-              <h1>Registration</h1>
               <Form.Label>
                 Username:
               </Form.Label>
