@@ -7,7 +7,8 @@ import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup'
-
+import './registration-view.scss';
+ 
 export function RegistrationView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

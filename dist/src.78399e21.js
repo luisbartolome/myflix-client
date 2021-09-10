@@ -48159,7 +48159,12 @@ LoginView.propType = {
   password: _propTypes.default.string.isRequired,
   handleSubmit: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./login-view.scss":"components/login-view/login-view.scss"}],"components/registration-view/registration-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./login-view.scss":"components/login-view/login-view.scss"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/registration-view/registration-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -48182,6 +48187,8 @@ var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _InputGroup = _interopRequireDefault(require("react-bootstrap/InputGroup"));
+
+require("./registration-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48341,7 +48348,7 @@ RegistrationView.propType = {
   birthday: _propTypes.default.string.isRequired,
   handleSubmit: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/InputGroup":"../node_modules/react-bootstrap/esm/InputGroup.js"}],"components/movie-card/movie-card.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/InputGroup":"../node_modules/react-bootstrap/esm/InputGroup.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/movie-card/movie-card.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -48885,7 +48892,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1050" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "24284" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
