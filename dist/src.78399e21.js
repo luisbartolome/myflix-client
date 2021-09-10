@@ -48246,7 +48246,9 @@ function RegistrationView(props) {
     className: "login-view"
   }, "className", "center"), /*#__PURE__*/_react.default.createElement("h1", {
     className: "title"
-  }, "myFlix"), /*#__PURE__*/_react.default.createElement(_Row.default, null, /*#__PURE__*/_react.default.createElement(_Form.default, {
+  }, "myFlix"), /*#__PURE__*/_react.default.createElement(_Row.default, {
+    className: "formular"
+  }, /*#__PURE__*/_react.default.createElement(_Form.default, {
     className: "login was-validated",
     noValidate: true
   }, /*#__PURE__*/_react.default.createElement(_Form.default.Group, {
