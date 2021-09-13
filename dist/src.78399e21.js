@@ -48239,7 +48239,7 @@ function RegistrationView(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     console.log(username, password, confirmPassword, email, Birthday);
-    props.onRegistration(null);
+    props.onRegistration(username);
   };
 
   return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, _defineProperty({
@@ -48367,6 +48367,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
+
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 require("./movie-card.scss");
@@ -48412,24 +48414,15 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           movie = _this$props.movie,
           onMovieClick = _this$props.onMovieClick;
-      return /*#__PURE__*/_react.default.createElement("div", {
-        className: "movie-card bg-white m-2 p-2 rounded d-flex flex-column justify-content-between align-items-center"
-      }, /*#__PURE__*/_react.default.createElement("div", {
-        className: "d-flex flex-column align-items-center"
-      }, /*#__PURE__*/_react.default.createElement("img", {
-        src: movie.ImagePath,
-        className: "movie-card-img rounded mb-2 shadow-lg"
-      }), /*#__PURE__*/_react.default.createElement("p", {
-        className: "h6 text-center text-dark font-weight-semi-bold"
-      }, movie.Title)), /*#__PURE__*/_react.default.createElement("p", {
-        className: "movie-card-description text-muted"
-      }, movie.Description.slice(0, 90), "..."), /*#__PURE__*/_react.default.createElement(_Button.default, {
-        className: "m-1",
-        variant: "info",
+      return /*#__PURE__*/_react.default.createElement(_Card.default, null, /*#__PURE__*/_react.default.createElement(_Card.default.Img, {
+        variant: "top",
+        src: movie.ImagePath
+      }), /*#__PURE__*/_react.default.createElement(_Card.default.Body, null, /*#__PURE__*/_react.default.createElement(_Card.default.Title, null, movie.Title), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, movie.Description), /*#__PURE__*/_react.default.createElement(_Button.default, {
         onClick: function onClick() {
           return onMovieClick(movie);
-        }
-      }, "View More"));
+        },
+        variant: "link"
+      }, "View more")));
     }
   }]);
 
@@ -48457,7 +48450,7 @@ MovieCard.propTypes = {
 };
 var _default = MovieCard;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./movie-card.scss":"components/movie-card/movie-card.scss"}],"components/movie-view/movie-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./movie-card.scss":"components/movie-card/movie-card.scss"}],"components/movie-view/movie-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -48610,11 +48603,11 @@ function Header(props) {
   }, "My Flix App"), /*#__PURE__*/_react.default.createElement(_Nav.default, {
     className: "me-auto"
   }, /*#__PURE__*/_react.default.createElement(_Nav.default.Link, {
-    href: "#home"
+    href: "/"
   }, "Home"), /*#__PURE__*/_react.default.createElement(_Nav.default.Link, {
-    href: "#features"
+    href: "/profile"
   }, "Profile"), /*#__PURE__*/_react.default.createElement(_Nav.default.Link, {
-    href: "#pricing"
+    href: "Logout"
   }, "Logout"))));
 }
 
@@ -48766,7 +48759,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         className: "main-view"
       });
       return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_Row.default, {
-        className: "main-view"
+        className: "main-view justify-content-md-center"
       }, selectedMovie ? /*#__PURE__*/_react.default.createElement(_Col.default, {
         md: 8
       }, /*#__PURE__*/_react.default.createElement(_movieView.MovieView, {
@@ -48894,7 +48887,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "2170" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1030" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

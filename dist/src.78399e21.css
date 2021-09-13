@@ -74,23 +74,12 @@ Button {
   }
 }
 .movie-card {
-  max-width: 100%;
-  height: 340px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
-.movie-card-img {
-  width: 100px;
-  height: 150px;
-  object-fit: cover;
-}
-
-.movie-card-description {
-  font-size: 12px;
-  -webkit-line-clamp: 5;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
+.main-view {
+  text-align: center;
 }
 .cent {
   text-align: center;
@@ -103,7 +92,6 @@ Button {
 }
 .main-view {
   margin-top: 40px;
-  margin-left: -10px;
 }
 .body {
   color: #fdfefe;

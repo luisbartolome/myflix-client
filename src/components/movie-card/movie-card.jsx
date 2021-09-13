@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Card from 'react-bootstrap/Card';
 
 //Components & Styling
 import Button from 'react-bootstrap/Button';
@@ -11,30 +12,17 @@ export class MovieCard extends React.Component {
     
     
     return (
-      <div className="movie-card bg-white m-2 p-2 rounded d-flex flex-column justify-content-between align-items-center">
-        <div className="d-flex flex-column align-items-center">
-          <img
-            src={movie.ImagePath}
-            className="movie-card-img rounded mb-2 shadow-lg"
-          />
-          <p className="h6 text-center text-dark font-weight-semi-bold">
-            {movie.Title}
-          </p>
-        </div>
-        <p className="movie-card-description text-muted">
-          {movie.Description.slice(0, 90)}...
-        </p>
-        <Button
-          className="m-1"
-          variant="info"
-          onClick={() => onMovieClick(movie)}
-        >
-          View More
-        </Button>
-      </div>
-    );
-  }
-}
+        <Card>
+          <Card.Img variant="top" src={movie.ImagePath} />
+          <Card.Body>
+            <Card.Title>{movie.Title}</Card.Title>
+            <Card.Text>{movie.Description}</Card.Text>
+            <Button onClick={() => onMovieClick(movie)} variant="link">View more</Button>
+          </Card.Body>
+        </Card>
+      );
+    }
+  } 
 
 // PropTypes
 MovieCard.propTypes = {
