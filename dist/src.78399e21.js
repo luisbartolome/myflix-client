@@ -48414,7 +48414,9 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           movie = _this$props.movie,
           onMovieClick = _this$props.onMovieClick;
-      return /*#__PURE__*/_react.default.createElement(_Card.default, null, /*#__PURE__*/_react.default.createElement(_Card.default.Img, {
+      return /*#__PURE__*/_react.default.createElement(_Card.default, {
+        className: "h-100 text-white bg-dark"
+      }, /*#__PURE__*/_react.default.createElement(_Card.default.Img, {
         variant: "top",
         src: movie.ImagePath
       }), /*#__PURE__*/_react.default.createElement(_Card.default.Body, null, /*#__PURE__*/_react.default.createElement(_Card.default.Title, null, movie.Title), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, movie.Description), /*#__PURE__*/_react.default.createElement(_Button.default, {
@@ -48887,7 +48889,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1033" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1042" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
