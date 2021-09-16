@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Container } from 'react-bootstrap';
-
+import { Container, InputGroup } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
 import './login-view.scss'
 
 export function LoginView(props) {
@@ -30,20 +30,38 @@ export function LoginView(props) {
       
       <Container className="login-view" className="center">
       <h1 className="title">myFlix</h1>
+      <Row>
+        <Form className="login was-validated" noValidate>
       <Form.Group controlId="formUsername">
         <Form.Label>
           Username:
         </Form.Label>
         <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} />
+        <Form.Control.Feedback type="valid">
+              awesome you did it!
+            </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">
+              This field is mandatory!
+            </Form.Control.Feedback>
       </Form.Group>
+      
+      <InputGroup hasValidation>
       <Form.Group controlId="formPassword">
         <Form.Label>
         Password:
         </Form.Label>
-        <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      
+        <Form.Control  required type="password" value={password} onChange={e => setPassword(e.target.value)} />
+        <Form.Control.Feedback type="valid">
+              awesome you did it!
+            </Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid">
+              This field is mandatory!
+            </Form.Control.Feedback>
       </Form.Group>
-
+      </InputGroup>
+      </Form>
+      </Row>
+    
       <div className="middle"></div>
       <Button className="m-3" variant="info" type="submit" onClick={handleSubmit}
       >

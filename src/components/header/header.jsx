@@ -8,16 +8,17 @@ export function Header(props) {
 
   return(
       
-    <Navbar bg="dark" variant="dark">
+    <Navbar collapseOne expand="lg" bg="dark" variant="dark">
      <Container>
-    <Navbar.Brand href="#home">My Flix App</Navbar.Brand>
+    <Navbar.Brand href="#home">My Flix App
+    </Navbar.Brand>
     <Nav className="me-auto">
-            <Nav.Link href='/'>Home</Nav.Link>
+      <Nav.Link href='/'>Home</Nav.Link>
       <Nav.Link href='/profile'>Profile</Nav.Link>
       <Nav.Link href="Logout">Logout</Nav.Link>
      </Nav>
      </Container>
-  </Navbar> 
+  </Navbar>
     
   
   );

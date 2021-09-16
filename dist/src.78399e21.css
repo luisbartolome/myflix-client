@@ -14,9 +14,11 @@ Form {
 .title {
   min-width: 260px;
   font-weight: 700;
-  font-size: 3em;
+  font-size: 4em;
   text-align: center;
   color: #17a2b8;
+  margin-bottom: 50px;
+  margin-top: 10px;
 }
 
 @media all and (max-width: 400px) {
@@ -106,6 +108,10 @@ button.btn.btn-link {
 
 .card-img-top {
   height: 339px;
+}
+
+.navbar-expand {
+  margin: 15px;
 }
 .body {
   color: #fdfefe;

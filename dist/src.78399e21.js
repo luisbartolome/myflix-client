@@ -48069,6 +48069,8 @@ var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 var _reactBootstrap = require("react-bootstrap");
 
+var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
+
 require("./login-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -48116,14 +48118,18 @@ function LoginView(props) {
   var newUser = function newUser(e) {
     e.preventDefault();
     console.log(username, password);
-    props.onLoggedIn('newUser');
+    props.onLoggedIn(false);
+    props.onRegistration(true);
   };
 
   return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, _defineProperty({
     className: "login-view"
   }, "className", "center"), /*#__PURE__*/_react.default.createElement("h1", {
     className: "title"
-  }, "myFlix"), /*#__PURE__*/_react.default.createElement(_Form.default.Group, {
+  }, "myFlix"), /*#__PURE__*/_react.default.createElement(_Row.default, null, /*#__PURE__*/_react.default.createElement(_Form.default, {
+    className: "login was-validated",
+    noValidate: true
+  }, /*#__PURE__*/_react.default.createElement(_Form.default.Group, {
     controlId: "formUsername"
   }, /*#__PURE__*/_react.default.createElement(_Form.default.Label, null, "Username:"), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
     type: "text",
@@ -48131,15 +48137,26 @@ function LoginView(props) {
     onChange: function onChange(e) {
       return setUsername(e.target.value);
     }
-  })), /*#__PURE__*/_react.default.createElement(_Form.default.Group, {
+  }), /*#__PURE__*/_react.default.createElement(_Form.default.Control.Feedback, {
+    type: "valid"
+  }, "awesome you did it!"), /*#__PURE__*/_react.default.createElement(_Form.default.Control.Feedback, {
+    type: "invalid"
+  }, "This field is mandatory!")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.InputGroup, {
+    hasValidation: true
+  }, /*#__PURE__*/_react.default.createElement(_Form.default.Group, {
     controlId: "formPassword"
   }, /*#__PURE__*/_react.default.createElement(_Form.default.Label, null, "Password:"), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
+    required: true,
     type: "password",
     value: password,
     onChange: function onChange(e) {
       return setPassword(e.target.value);
     }
-  })), /*#__PURE__*/_react.default.createElement("div", {
+  }), /*#__PURE__*/_react.default.createElement(_Form.default.Control.Feedback, {
+    type: "valid"
+  }, "awesome you did it!"), /*#__PURE__*/_react.default.createElement(_Form.default.Control.Feedback, {
+    type: "invalid"
+  }, "This field is mandatory!"))))), /*#__PURE__*/_react.default.createElement("div", {
     className: "middle"
   }), /*#__PURE__*/_react.default.createElement(_Button.default, {
     className: "m-3",
@@ -48159,7 +48176,7 @@ LoginView.propType = {
   password: _propTypes.default.string.isRequired,
   handleSubmit: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./login-view.scss":"components/login-view/login-view.scss"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","./login-view.scss":"components/login-view/login-view.scss"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -48239,7 +48256,7 @@ function RegistrationView(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
     console.log(username, password, confirmPassword, email, Birthday);
-    props.onRegistration(username);
+    props.onRegistration(false);
   };
 
   return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, _defineProperty({
@@ -48598,6 +48615,8 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 function Header(props) {
   return /*#__PURE__*/_react.default.createElement(_Navbar.default, {
+    collapseOne: true,
+    expand: "lg",
     bg: "dark",
     variant: "dark"
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_Navbar.default.Brand, {
@@ -48743,8 +48762,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       var _this$state = this.state,
           movies = _this$state.movies,
           selectedMovie = _this$state.selectedMovie,
-          user = _this$state.user;
-      if (user === 'newUser') return /*#__PURE__*/_react.default.createElement(_registrationView.RegistrationView, {
+          user = _this$state.user,
+          register = _this$state.register;
+      if (!user && register) return /*#__PURE__*/_react.default.createElement(_registrationView.RegistrationView, {
         onRegistration: function onRegistration(user) {
           return _this3.onRegister(user);
         }
@@ -48754,6 +48774,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       if (!user) return /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
         onLoggedIn: function onLoggedIn(user) {
           return _this3.onLoggedIn(user);
+        },
+        onRegistration: function onRegistration(user) {
+          return _this3.onRegister(user);
         }
       }); // Before the movies have been loaded
 
@@ -48889,7 +48912,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1042" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1053" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
