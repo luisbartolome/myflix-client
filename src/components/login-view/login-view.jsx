@@ -22,7 +22,8 @@ export function LoginView(props) {
   const newUser = (e) =>{
     e.preventDefault();
     console.log(username, password);
-      props.onLoggedIn('newUser')
+      props.onLoggedIn(false)
+      props.onRegistration(true)
   };
 
   return(
