@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
+import { Link } from "react-router-dom";
 import { Container } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
@@ -18,9 +19,24 @@ export function RegistrationView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password,confirmPassword, email, Birthday);
-    props.onRegistration(false);
-  };
+       console.log(username, password, confirmPassword, email, birthday); //
+       axios.post('https://backend-myflix1.herokuapp.com/users', {
+         Username: username,
+         Password: password,
+         Email: email,
+         Birthday: birthday
+       })
+       .then(response => {
+         const data = response.data;
+         console.log(data);
+         console.log('registration Successful')
+         //window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+         
+       })
+       .catch(e => {
+         console.log('error registering the user')
+       });
+     };
 
   return (
     <Container className="login-view" className="center">
@@ -128,8 +144,9 @@ export function RegistrationView(props) {
 
       </Row>
       <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button> 
-     
+      <Link to={`/`}>
      <Button variant="secondary" type="submit">Back to login</Button>
+     </Link>
     </Form>
     </Row>
 

@@ -10,20 +10,22 @@ export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  //The extra (e) in the code, as well as the e.preventDefault(); method, prevents the default refresh/change of the page from the handleSubmit() method.
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    /* Send a request 
-    to the server for authentication */
-    /* then call props.onLoggedIn(username) */
-    props.onLoggedIn(username);
-  };
-  
-  const newUser = (e) =>{
-    e.preventDefault();
-    console.log(username, password);
-      props.onLoggedIn(false)
-      props.onRegistration(true)
+    // Send a request to the server for authentication
+    axios
+      .post('https://backend-myflix1.herokuapp.com/login', {
+        Username: username,
+        Password: password,
+      })
+      .then((response) => {
+        const data = response.data;
+        props.onLoggedIn(data);
+      })
+      .catch((e) => {
+        console.log('no such user');
+      });
   };
 
   return(
@@ -62,21 +64,27 @@ export function LoginView(props) {
       </Form>
       </Row>
     
-      <div className="middle"></div>
-      <Button className="m-3" variant="info" type="submit" onClick={handleSubmit}
-      >
-        Login
-      </Button>
-      < Button className="m-3" variant="info" type="submit" onClick={newUser}>
-        Register here
-      </Button>
-    </Container>
-  
-  );
+      <div className="middle">
+          <Button
+            className="m-3"
+            variant="info"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            Login
+          </Button>
+          <Form.Group
+            className="registration-group"
+            controlId="formRegistration"
+          >
+            <Form.Text className="text-light">Don't have an account?</Form.Text>
+            <Link to={`/register`}>
+              <Button className="register-link" variant="dark">
+                Register here
+              </Button>
+            </Link>
+          </Form.Group>
+          </div>
+        </Container>
+  );  
 }
-  
-LoginView.propType = {
-  username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    handleSubmit: PropTypes.func.isRequired
-};

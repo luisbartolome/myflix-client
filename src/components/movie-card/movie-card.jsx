@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
+import { Link } from "react-router-dom";
 
 //Components & Styling
 import Button from 'react-bootstrap/Button';
@@ -8,39 +9,30 @@ import './movie-card.scss';
 
 export class MovieCard extends React.Component {
   render() {
-    const { movie, onMovieClick } = this.props;
+    const { movieData } = this.props;
     
     
     return (
-        <Card className="h-100 text-white bg-dark">
-          <Card.Img variant="top" src={movie.ImagePath} />
-          <Card.Body>
-            <Card.Title>{movie.Title}</Card.Title>
-            <Card.Text>{movie.Description}</Card.Text>
-            <Button onClick={() => onMovieClick(movie)} variant="link">View more</Button>
-          </Card.Body>
-        </Card>
-      );
-    }
-  } 
+      <Card style={{ width: '15rem' }} className="movie-card">
+        <Card.Body>
+          <Card.Img variant="top" src={movieData.ImagePath} />
+          <Card.Title>{movieData.Title}</Card.Title>
+          
+        </Card.Body>
+        <Link  to={`/movies/${movieData._id}`}>
+          <Button variant="primary" style={{ width: '15rem'}}>Open</Button>
+        </Link>
+        {/* <Button variant="primary" onClick={()=> onMovieClick(movieData)}>Open</Button> */}
+      </Card>    
+    );  
+  }
+}
 
-// PropTypes
 MovieCard.propTypes = {
-  movie: PropTypes.shape({
+  movieData: PropTypes.shape({
     Title: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Description: PropTypes.string.isRequired,
-    }),
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-      Birth: PropTypes.string,
-    }),
-    ImagePath: PropTypes.string.isRequired,
-    Featured: PropTypes.bool.isRequired,
+    
+    ImagePath: PropTypes.string.isRequired
   }).isRequired,
-};
-
-export default MovieCard;
+  // onMovieClick: PropTypes.func.isRequired
+}; 
