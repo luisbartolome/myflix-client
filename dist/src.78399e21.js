@@ -51165,7 +51165,7 @@ function LoginView(props) {
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault(); // Send a request to the server for authentication
 
-    _axios.default.post("https://backend-myflix1.herokuapp.com/login", {
+    _axios.default.post('https://backend-myflix1.herokuapp.com/login', {
       Username: username,
       Password: password
     }).then(function (response) {
@@ -51229,6 +51229,12 @@ function LoginView(props) {
     variant: "dark"
   }, "Register here")))));
 }
+
+LoginView.propType = {
+  username: _propTypes.default.string.isRequired,
+  password: _propTypes.default.string.isRequired,
+  handleSubmit: _propTypes.default.func.isRequired
+};
 },{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./login-view.scss":"components/login-view/login-view.scss"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
@@ -52605,7 +52611,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "25652" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1033" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
