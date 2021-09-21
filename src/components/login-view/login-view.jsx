@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Container, InputGroup } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
+import { Link } from "react-router-dom";
 import './login-view.scss'
 
 export function LoginView(props) {
@@ -15,7 +18,7 @@ export function LoginView(props) {
     e.preventDefault();
     // Send a request to the server for authentication
     axios
-      .post('https://backend-myflix1.herokuapp.com/login', {
+      .post(`https://backend-myflix1.herokuapp.com/login`, {
         Username: username,
         Password: password,
       })

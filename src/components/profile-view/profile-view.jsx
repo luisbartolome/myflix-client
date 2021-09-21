@@ -39,7 +39,7 @@ export class ProfileView extends React.Component {
     };
 
     axios
-      .get(`https://api-myflix.herokuapp.com/users/${username}`, config)
+      .get('https://backend-myflix1.herokuapp.com/${username}', config)
       .then((res) => {
         res.data.map((item) => {
           this.setState({
@@ -58,7 +58,7 @@ export class ProfileView extends React.Component {
     const username = localStorage.getItem('user');
 
     axios
-      .delete(`https://api-myflix.herokuapp.com/users/${username}`, {
+      .delete('https://backend-myflix1.herokuapp.com/users/${username}', {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -86,7 +86,7 @@ export class ProfileView extends React.Component {
 
     axios
       .put(
-        `https://api-myflix.herokuapp.com/users/${username}`,
+        'https://backend-myflix1.herokuapp.com/users/${username}',
         {
           Username: newUsername,
           Password: newPassword,

@@ -5,14 +5,15 @@ import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+import  Header  from '../header/header';
 import { DirectorView } from '../director-view/director-view';
-import { GenreView } from '../genre-view/genre-view';
+import  { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { Container } from 'react-bootstrap';
 
 //React-router-DOM components
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -37,6 +38,7 @@ export class MainView extends React.Component {
         user: localStorage.getItem('user')
       });
       this.getMovies(accessToken);
+      this.getUser(accessToken);
       
     }
   }
@@ -99,7 +101,7 @@ export class MainView extends React.Component {
   }
 
   addToFavorites(movieId){
-    axios.post(`https://backend-myflix1.herokuapp.com/users/movies/${localStorage.user}/${movieId}`, {}, {
+    axios.post('https://backend-myflix1.herokuapp.com/users/movies/${localStorage.user}/${movieId}', {}, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
     })
     .then(response => {
@@ -127,7 +129,7 @@ export class MainView extends React.Component {
   }
 
   unRegister(){
-  axios.delete(`https://backend-myflix1.herokuapp.com/users/${localStorage.user}`, {
+  axios.delete('https://backend-myflix1.herokuapp.com/users/${localStorage.user}', {
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
   })
   .then(response => {

@@ -15,11 +15,11 @@ export function RegistrationView(props) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword ] = useState('');
   const [email, setEmail] = useState('');
-  const [Birthday, setBirthday] = useState('');
+  const [birthday, setBirthday] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-       console.log(username, password, confirmPassword, email, birthday); //
+       console.log(username, password, confirmPassword, email, birthday); 
        axios.post('https://backend-myflix1.herokuapp.com/users', {
          Username: username,
          Password: password,
@@ -30,7 +30,7 @@ export function RegistrationView(props) {
          const data = response.data;
          console.log(data);
          console.log('registration Successful')
-         //window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+         window.open('/', '_self'); //the second argument '_self' is necessary so that the page will open in the current tab
          
        })
        .catch(e => {
@@ -131,7 +131,7 @@ export function RegistrationView(props) {
         min="1900-01-01" 
         max={new Date().toISOString().split('T')[0]}
         placeholder="MM/DD/YYYY" 
-        value={Birthday} 
+        value={birthday} 
         onChange={e => setBirthday(e.target.value)} />
         <Form.Control.Feedback type="valid">
           awesome you did it!
