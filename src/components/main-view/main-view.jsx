@@ -22,9 +22,7 @@ export class MainView extends React.Component {
     // Initial state is set to null
     this.state = {
       movies: [],
-      selectedMovie: null,
       user: null,
-      userData: [],
     };
   }
 
@@ -35,7 +33,6 @@ export class MainView extends React.Component {
         user: localStorage.getItem('user')
       });
       this.getMovies(accessToken);
-      this.getUser(accessToken);
       
     }
   }
@@ -52,33 +49,6 @@ export class MainView extends React.Component {
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token)
     
-  }
-// Log Out
-
-  onLoggedOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.setState({
-      user: null,
-      userData:[]
-    });
-  }
-
-  //  Get user recent data from DB
-  getUsers(token) {
-    axios.post('https://backend-myflix1.herokuapp.com/users', {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then(response => {
-        // Assign the result to the state
-        this.setState({
-          users: response.data
-        });
-        console.log(response)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   }
 
   //   Get all movies in DB
@@ -97,55 +67,20 @@ export class MainView extends React.Component {
       })
   }
 
-  addToFavorites(movieId){
-    axios.post('https://backend-myflix1.herokuapp.com/users/movies/${localStorage.user}/${movieId}', {}, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
-    })
-    .then(response => {
-      // Assign the result to the state
-      console.log(response)
-      console.log(movieId+' was added') 
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-  
-  removeMovie(movieId){
-    axios.post('https://backend-myflix1.herokuapp.com/users/movies/${localStorage.user}/${movieId}/remove', {}, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
-    })
-    .then(response => {
-      // Assign the result to the state
-      console.log(response)
-      console.log(movieId+' was removed')       
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
+// Log Out
 
-  unRegister(){
-  axios.delete('https://backend-myflix1.herokuapp.com/users/${localStorage.user}', {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}`}
-  })
-  .then(response => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-      // Assign the result to the state
-      this.setState({
-        user: null,
-        userData:[]
-      });
-    }
-  ).catch(function (error) {
-    console.log(error);
+onLoggedOut() {
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+  this.setState({
+    user: null,
+    newRegistration: null,
   });
 }
 
-setSelectMovie(newSelectedMovie){
+onRegister(newRegistration) {
   this.setState({
-      selectedMovie: newSelectedMovie
+    newRegistration,
   });
 }
 
