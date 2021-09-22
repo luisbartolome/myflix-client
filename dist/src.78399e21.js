@@ -52183,9 +52183,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
     _this.state = {
       movies: [],
-      selectedMovie: null,
-      user: null,
-      userData: []
+      user: null
     };
     return _this;
   }
@@ -52200,7 +52198,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           user: localStorage.getItem('user')
         });
         this.getMovies(accessToken);
-        this.getUser(accessToken);
       }
     } // Log In
 
@@ -52214,6 +52211,25 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       localStorage.setItem('token', authData.token);
       localStorage.setItem('user', authData.user.Username);
       this.getMovies(authData.token);
+    } //   Get all movies in DB
+
+  }, {
+    key: "getMovies",
+    value: function getMovies(token) {
+      var _this2 = this;
+
+      _axios.default.get('https://backend-myflix1.herokuapp.com/movies', {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        // Assign the result to the state
+        _this2.setState({
+          movies: response.data
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
     } // Log Out
 
   }, {
@@ -52223,111 +52239,20 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       localStorage.removeItem('user');
       this.setState({
         user: null,
-        userData: []
-      });
-    } //  Get user recent data from DB
-
-  }, {
-    key: "getUsers",
-    value: function getUsers(token) {
-      var _this2 = this;
-
-      _axios.default.post('https://backend-myflix1.herokuapp.com/users', {
-        headers: {
-          Authorization: "Bearer ".concat(token)
-        }
-      }).then(function (response) {
-        // Assign the result to the state
-        _this2.setState({
-          users: response.data
-        });
-
-        console.log(response);
-      }).catch(function (error) {
-        console.log(error);
-      });
-    } //   Get all movies in DB
-
-  }, {
-    key: "getMovies",
-    value: function getMovies(token) {
-      var _this3 = this;
-
-      _axios.default.get('https://backend-myflix1.herokuapp.com/movies', {
-        headers: {
-          Authorization: "Bearer ".concat(token)
-        }
-      }).then(function (response) {
-        // Assign the result to the state
-        _this3.setState({
-          movies: response.data
-        });
-      }).catch(function (error) {
-        console.log(error);
+        newRegistration: null
       });
     }
   }, {
-    key: "addToFavorites",
-    value: function addToFavorites(movieId) {
-      _axios.default.post('https://backend-myflix1.herokuapp.com/users/movies/${localStorage.user}/${movieId}', {}, {
-        headers: {
-          Authorization: "Bearer ".concat(localStorage.getItem('token'))
-        }
-      }).then(function (response) {
-        // Assign the result to the state
-        console.log(response);
-        console.log(movieId + ' was added');
-      }).catch(function (error) {
-        console.log(error);
-      });
-    }
-  }, {
-    key: "removeMovie",
-    value: function removeMovie(movieId) {
-      _axios.default.post('https://backend-myflix1.herokuapp.com/users/movies/${localStorage.user}/${movieId}/remove', {}, {
-        headers: {
-          Authorization: "Bearer ".concat(localStorage.getItem('token'))
-        }
-      }).then(function (response) {
-        // Assign the result to the state
-        console.log(response);
-        console.log(movieId + ' was removed');
-      }).catch(function (error) {
-        console.log(error);
-      });
-    }
-  }, {
-    key: "unRegister",
-    value: function unRegister() {
-      var _this4 = this;
-
-      _axios.default.delete('https://backend-myflix1.herokuapp.com/users/${localStorage.user}', {
-        headers: {
-          Authorization: "Bearer ".concat(localStorage.getItem('token'))
-        }
-      }).then(function (response) {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user'); // Assign the result to the state
-
-        _this4.setState({
-          user: null,
-          userData: []
-        });
-      }).catch(function (error) {
-        console.log(error);
-      });
-    }
-  }, {
-    key: "setSelectMovie",
-    value: function setSelectMovie(newSelectedMovie) {
+    key: "onRegister",
+    value: function onRegister(newRegistration) {
       this.setState({
-        selectedMovie: newSelectedMovie
+        newRegistration: newRegistration
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this3 = this;
 
       var _this$state = this.state,
           movies = _this$state.movies,
@@ -52341,7 +52266,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         render: function render() {
           if (!user) return /*#__PURE__*/_react.default.createElement(_Col.default, null, /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
             onLoggedIn: function onLoggedIn(user) {
-              return _this5.onLoggedIn(user);
+              return _this3.onLoggedIn(user);
             }
           }));
           if (movies.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
@@ -52376,7 +52301,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
               history = _ref.history;
           if (!user) return /*#__PURE__*/_react.default.createElement(_Col.default, null, /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
             onLoggedIn: function onLoggedIn(user) {
-              return _this5.onLoggedIn(user);
+              return _this3.onLoggedIn(user);
             }
           }));
           if (movies.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
@@ -52400,7 +52325,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
               history = _ref2.history;
           if (!user) return /*#__PURE__*/_react.default.createElement(_Col.default, null, /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
             onLoggedIn: function onLoggedIn(user) {
-              return _this5.onLoggedIn(user);
+              return _this3.onLoggedIn(user);
             }
           }));
           if (movies.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
@@ -52424,7 +52349,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
               history = _ref3.history;
           if (!user) return /*#__PURE__*/_react.default.createElement(_Col.default, null, /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
             onLoggedIn: function onLoggedIn(user) {
-              return _this5.onLoggedIn(user);
+              return _this3.onLoggedIn(user);
             }
           }));
           if (movies.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
@@ -52448,7 +52373,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           var history = _ref4.history;
           if (!user) return /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
             onLoggedIn: function onLoggedIn(data) {
-              return _this5.onLoggedIn(data);
+              return _this3.onLoggedIn(data);
             }
           });
           if (movies.length === 0) return;
