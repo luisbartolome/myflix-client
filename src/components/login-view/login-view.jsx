@@ -18,7 +18,7 @@ export function LoginView(props) {
     e.preventDefault();
     // Send a request to the server for authentication
     axios
-      .post(`https://backend-myflix1.herokuapp.com/login`, {
+      .post('https://backend-myflix1.herokuapp.com/login', {
         Username: username,
         Password: password,
       })
@@ -91,3 +91,10 @@ export function LoginView(props) {
         </Container>
   );  
 }
+
+LoginView.propTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+  }),
+};
