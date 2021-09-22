@@ -9,24 +9,28 @@ export class DirectorView extends React.Component {
     render(){
         const {director, onBackClick} = this.props;
         return (
-            <Card style={{ width: '40rem' }} className="justify-content-md-center" className="director-view">
+            <Card bg="dark" style={{ width: '40rem' }} className="justify-content-md-center" className="director-view">
                 <Card.Body>
 
                     <Card.Title>{director.Name}</Card.Title>
                     <Card.Text>{director.Bio}</Card.Text>
   
                 </Card.Body>
-                <Link to={`/`}>
-                    <Button style={{ width: '40rem' }} variant="secondary">Main View</Button>
-                </Link>
-               
-                <Button variant="primary" onClick={()=> onBackClick(null)}>Back</Button>
-            
-            </Card>
-    );
+                <Card.Text>
+            <Link to={`/`}>
+              <Button variant="secondary">Main View</Button>
+            </Link>
+          </Card.Text>
+
+          <Card.Text>
+            <Button variant="primary" onClick={() => onBackClick(null)}>
+              Back
+            </Button>
+          </Card.Text>
+        </Card>
     
-}
-}
+        )}
+    };
 
 DirectorView.propTypes = {
     director: PropTypes.shape({

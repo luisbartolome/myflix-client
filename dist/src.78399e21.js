@@ -51519,10 +51519,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/_react.default.createElement(_Card.default.Title, null, movieData.Title)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/movies/".concat(movieData._id)
       }, /*#__PURE__*/_react.default.createElement(_Button.default, {
-        variant: "primary",
-        style: {
-          width: '15rem'
-        }
+        variant: "primary"
       }, "Open")));
     }
   }]);
@@ -51671,7 +51668,51 @@ MovieView.propTypes = {
   }).isRequired,
   onBackClick: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","axios":"../node_modules/axios/index.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/director-view/director-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","axios":"../node_modules/axios/index.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"components/header/header.jsx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Header = Header;
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Navbar = _interopRequireDefault(require("react-bootstrap/Navbar"));
+
+var _Nav = _interopRequireDefault(require("react-bootstrap/Nav"));
+
+var _reactBootstrap = require("react-bootstrap");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function Header(props) {
+  return /*#__PURE__*/_react.default.createElement(_Navbar.default, {
+    collapseOne: true,
+    expand: "lg",
+    bg: "dark",
+    variant: "dark"
+  }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_Navbar.default.Brand, {
+    href: "#home"
+  }, "My Flix App"), /*#__PURE__*/_react.default.createElement(_Nav.default, {
+    className: "me-auto"
+  }, /*#__PURE__*/_react.default.createElement(_Nav.default.Link, {
+    href: "/"
+  }, "Home"), /*#__PURE__*/_react.default.createElement(_Nav.default.Link, {
+    href: "/profile"
+  }, "Profile"), /*#__PURE__*/_react.default.createElement(_Nav.default.Link, {
+    href: "Logout"
+  }, "Logout"))));
+}
+
+var _default = Header;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","react-bootstrap/Navbar":"../node_modules/react-bootstrap/esm/Navbar.js","react-bootstrap/Nav":"../node_modules/react-bootstrap/esm/Nav.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js"}],"components/director-view/director-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -51733,23 +51774,21 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
           director = _this$props.director,
           onBackClick = _this$props.onBackClick;
       return /*#__PURE__*/_react.default.createElement(_Card.default, _defineProperty({
+        bg: "dark",
         style: {
           width: '40rem'
         },
         className: "justify-content-md-center"
-      }, "className", "director-view"), /*#__PURE__*/_react.default.createElement(_Card.default.Body, null, /*#__PURE__*/_react.default.createElement(_Card.default.Title, null, director.Name), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, director.Bio)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      }, "className", "director-view"), /*#__PURE__*/_react.default.createElement(_Card.default.Body, null, /*#__PURE__*/_react.default.createElement(_Card.default.Title, null, director.Name), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, director.Bio)), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, /*#__PURE__*/_react.default.createElement(_Button.default, {
-        style: {
-          width: '40rem'
-        },
         variant: "secondary"
-      }, "Main View")), /*#__PURE__*/_react.default.createElement(_Button.default, {
+      }, "Main View"))), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, /*#__PURE__*/_react.default.createElement(_Button.default, {
         variant: "primary",
         onClick: function onClick() {
           return onBackClick(null);
         }
-      }, "Back"));
+      }, "Back")));
     }
   }]);
 
@@ -51757,6 +51796,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.DirectorView = DirectorView;
+;
 DirectorView.propTypes = {
   director: _propTypes.default.shape({
     Name: _propTypes.default.string.isRequired,
@@ -51783,11 +51823,17 @@ var _reactBootstrap = require("react-bootstrap");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
+
+var _reactRouterDom = require("react-router-dom");
+
 require("./genre-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -51826,28 +51872,20 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           genre = _this$props.genre,
           onBackClick = _this$props.onBackClick;
-      return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
-        fluid: true,
-        className: "GenreView"
-      }, /*#__PURE__*/_react.default.createElement("div", {
-        className: "genre-view"
-      }, /*#__PURE__*/_react.default.createElement("div", {
-        className: "genre-name"
-      }, /*#__PURE__*/_react.default.createElement("span", {
-        className: "label font-weight-bold"
-      }, "Genre: "), /*#__PURE__*/_react.default.createElement("span", {
-        className: "value"
-      }, genre.Name)), /*#__PURE__*/_react.default.createElement("div", {
-        className: "genre-description"
-      }, /*#__PURE__*/_react.default.createElement("span", {
-        className: "label font-weight-bold"
-      }, "Description: "), /*#__PURE__*/_react.default.createElement("span", {
-        className: "value"
-      }, genre.Description)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
-        variant: "info",
-        size: "sm",
+      return /*#__PURE__*/_react.default.createElement(_Card.default, _defineProperty({
+        bg: "dark",
+        style: {
+          width: '40rem'
+        },
+        className: "justify-content-md-center"
+      }, "className", "director-view"), /*#__PURE__*/_react.default.createElement(_Card.default.Body, null, /*#__PURE__*/_react.default.createElement(_Card.default.Title, null, genre.Name), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, genre.Description)), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+        to: "/"
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+        variant: "secondary"
+      }, "Main View"))), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+        variant: "primary",
         onClick: function onClick() {
-          onBackClick(null);
+          return onBackClick(null);
         }
       }, "Back")));
     }
@@ -51864,7 +51902,7 @@ GenreView.propTypes = {
   }),
   onBackClick: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","prop-types":"../node_modules/prop-types/index.js","./genre-view.scss":"components/genre-view/genre-view.scss"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./genre-view.scss":"components/genre-view/genre-view.scss"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -52131,11 +52169,15 @@ var _movieCard = require("../movie-card/movie-card");
 
 var _movieView = require("../movie-view/movie-view");
 
+var _header = _interopRequireDefault(require("../header/header"));
+
 var _directorView = require("../director-view/director-view");
 
 var _genreView = require("../genre-view/genre-view");
 
 var _profileView = require("../profile-view/profile-view");
+
+var _reactBootstrap = require("react-bootstrap");
 
 var _reactRouterDom = require("react-router-dom");
 
@@ -52183,7 +52225,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
     _this.state = {
       movies: [],
-      user: null
+      selectedMovie: null,
+      user: null,
+      userData: []
     };
     return _this;
   }
@@ -52211,25 +52255,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       localStorage.setItem('token', authData.token);
       localStorage.setItem('user', authData.user.Username);
       this.getMovies(authData.token);
-    } //   Get all movies in DB
-
-  }, {
-    key: "getMovies",
-    value: function getMovies(token) {
-      var _this2 = this;
-
-      _axios.default.get('https://backend-myflix1.herokuapp.com/movies', {
-        headers: {
-          Authorization: "Bearer ".concat(token)
-        }
-      }).then(function (response) {
-        // Assign the result to the state
-        _this2.setState({
-          movies: response.data
-        });
-      }).catch(function (error) {
-        console.log(error);
-      });
     } // Log Out
 
   }, {
@@ -52239,26 +52264,117 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       localStorage.removeItem('user');
       this.setState({
         user: null,
-        newRegistration: null
+        userData: []
+      });
+    } //  Get user recent data from DB
+
+  }, {
+    key: "getUsers",
+    value: function getUsers(token) {
+      var _this2 = this;
+
+      _axios.default.post('https://backend-myflix1.herokuapp.com/users', {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        // Assign the result to the state
+        _this2.setState({
+          users: response.data
+        });
+
+        console.log(response);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    } //   Get all movies in DB
+
+  }, {
+    key: "getMovies",
+    value: function getMovies(token) {
+      var _this3 = this;
+
+      _axios.default.get('https://backend-myflix1.herokuapp.com/movies', {
+        headers: {
+          Authorization: "Bearer ".concat(token)
+        }
+      }).then(function (response) {
+        // Assign the result to the state
+        _this3.setState({
+          movies: response.data
+        });
+      }).catch(function (error) {
+        console.log(error);
       });
     }
   }, {
-    key: "onRegister",
-    value: function onRegister(newRegistration) {
+    key: "addToFavorites",
+    value: function addToFavorites(movieId) {
+      _axios.default.post('https://backend-myflix1.herokuapp.com/users/movies/${localStorage.user}/${movieId}', {}, {
+        headers: {
+          Authorization: "Bearer ".concat(localStorage.getItem('token'))
+        }
+      }).then(function (response) {
+        // Assign the result to the state
+        console.log(response);
+        console.log(movieId + ' was added');
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
+    key: "removeMovie",
+    value: function removeMovie(movieId) {
+      _axios.default.post('https://backend-myflix1.herokuapp.com/users/movies/${localStorage.user}/${movieId}/remove', {}, {
+        headers: {
+          Authorization: "Bearer ".concat(localStorage.getItem('token'))
+        }
+      }).then(function (response) {
+        // Assign the result to the state
+        console.log(response);
+        console.log(movieId + ' was removed');
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
+    key: "unRegister",
+    value: function unRegister() {
+      var _this4 = this;
+
+      _axios.default.delete('https://backend-myflix1.herokuapp.com/users/${localStorage.user}', {
+        headers: {
+          Authorization: "Bearer ".concat(localStorage.getItem('token'))
+        }
+      }).then(function (response) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user'); // Assign the result to the state
+
+        _this4.setState({
+          user: null,
+          userData: []
+        });
+      }).catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, {
+    key: "setSelectMovie",
+    value: function setSelectMovie(newSelectedMovie) {
       this.setState({
-        newRegistration: newRegistration
+        selectedMovie: newSelectedMovie
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this5 = this;
 
       var _this$state = this.state,
           movies = _this$state.movies,
           user = _this$state.user,
           history = _this$state.history;
-      return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_Row.default, {
+      return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_Row.default, {
         className: "main-view justify-content-md-center"
       }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         exact: true,
@@ -52266,7 +52382,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         render: function render() {
           if (!user) return /*#__PURE__*/_react.default.createElement(_Col.default, null, /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
             onLoggedIn: function onLoggedIn(user) {
-              return _this3.onLoggedIn(user);
+              return _this5.onLoggedIn(user);
             }
           }));
           if (movies.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
@@ -52275,9 +52391,10 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           return movies.map(function (m) {
             return /*#__PURE__*/_react.default.createElement(_Col.default, {
               md: 3,
-              key: m._id
+              key: m._id,
+              className: "d-flex"
             }, /*#__PURE__*/_react.default.createElement(_movieCard.MovieCard, {
-              movie: m
+              movieData: m
             }));
           });
         }
@@ -52301,7 +52418,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
               history = _ref.history;
           if (!user) return /*#__PURE__*/_react.default.createElement(_Col.default, null, /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
             onLoggedIn: function onLoggedIn(user) {
-              return _this3.onLoggedIn(user);
+              return _this5.onLoggedIn(user);
             }
           }));
           if (movies.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
@@ -52325,7 +52442,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
               history = _ref2.history;
           if (!user) return /*#__PURE__*/_react.default.createElement(_Col.default, null, /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
             onLoggedIn: function onLoggedIn(user) {
-              return _this3.onLoggedIn(user);
+              return _this5.onLoggedIn(user);
             }
           }));
           if (movies.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
@@ -52349,7 +52466,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
               history = _ref3.history;
           if (!user) return /*#__PURE__*/_react.default.createElement(_Col.default, null, /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
             onLoggedIn: function onLoggedIn(user) {
-              return _this3.onLoggedIn(user);
+              return _this5.onLoggedIn(user);
             }
           }));
           if (movies.length === 0) return /*#__PURE__*/_react.default.createElement("div", {
@@ -52373,7 +52490,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           var history = _ref4.history;
           if (!user) return /*#__PURE__*/_react.default.createElement(_loginView.LoginView, {
             onLoggedIn: function onLoggedIn(data) {
-              return _this3.onLoggedIn(data);
+              return _this5.onLoggedIn(data);
             }
           });
           if (movies.length === 0) return;
@@ -52393,7 +52510,7 @@ exports.MainView = MainView;
 ;
 var _default = MainView;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","../login-view/login-view":"components/login-view/login-view.jsx","../registration-view/registration-view":"components/registration-view/registration-view.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../director-view/director-view":"components/director-view/director-view.jsx","../genre-view/genre-view":"components/genre-view/genre-view.jsx","../profile-view/profile-view":"components/profile-view/profile-view.jsx","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","./main-view.scss":"components/main-view/main-view.scss"}],"index.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","../login-view/login-view":"components/login-view/login-view.jsx","../registration-view/registration-view":"components/registration-view/registration-view.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx","../header/header":"components/header/header.jsx","../director-view/director-view":"components/director-view/director-view.jsx","../genre-view/genre-view":"components/genre-view/genre-view.jsx","../profile-view/profile-view":"components/profile-view/profile-view.jsx","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","./main-view.scss":"components/main-view/main-view.scss"}],"index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -52489,7 +52606,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "29906" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "7950" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
