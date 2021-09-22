@@ -51706,7 +51706,7 @@ function Header(props) {
   }, "Home"), /*#__PURE__*/_react.default.createElement(_Nav.default.Link, {
     href: "/profile"
   }, "Profile"), /*#__PURE__*/_react.default.createElement(_Nav.default.Link, {
-    href: "Logout"
+    href: "/Logout"
   }, "Logout"))));
 }
 
@@ -52606,7 +52606,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "7950" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1052" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
