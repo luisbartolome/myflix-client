@@ -158,7 +158,7 @@ render() {
 return (
       <Router>
         <Header/>
-          <Row className="main-view justify-content-md-center">
+          <Row className="main-view justify-content-center" style={{ gap:"2rem"}}>
 
           <Route exact path="/" render={() => {
             if (!user) return <Col>
@@ -166,9 +166,7 @@ return (
             </Col>
             if (movies.length === 0) return <div className="main-view" />;
             return movies.map(m => (
-              <Col md={3} key={m._id} className="d-flex">
-                <MovieCard movieData={m} />
-              </Col>
+              <MovieCard movieData={m}/>
             ))
           }} />
 

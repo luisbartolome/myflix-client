@@ -10,7 +10,7 @@ export class GenreView extends React.Component {
     const { genre, onBackClick } = this.props;
 
     return (
-      <Card bg="dark" style={{ width: '40rem' }} className="justify-content-md-center" className="director-view">
+      <Card bg="dark" className="justify-content-md-center" className="director-view">
                 <Card.Body>
 
                     <Card.Title>{genre.Name}</Card.Title>

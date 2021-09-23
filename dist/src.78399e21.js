@@ -51775,9 +51775,6 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
           onBackClick = _this$props.onBackClick;
       return /*#__PURE__*/_react.default.createElement(_Card.default, _defineProperty({
         bg: "dark",
-        style: {
-          width: '40rem'
-        },
         className: "justify-content-md-center"
       }, "className", "director-view"), /*#__PURE__*/_react.default.createElement(_Card.default.Body, null, /*#__PURE__*/_react.default.createElement(_Card.default.Title, null, director.Name), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, director.Bio)), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/"
@@ -51874,9 +51871,6 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
           onBackClick = _this$props.onBackClick;
       return /*#__PURE__*/_react.default.createElement(_Card.default, _defineProperty({
         bg: "dark",
-        style: {
-          width: '40rem'
-        },
         className: "justify-content-md-center"
       }, "className", "director-view"), /*#__PURE__*/_react.default.createElement(_Card.default.Body, null, /*#__PURE__*/_react.default.createElement(_Card.default.Title, null, genre.Name), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, genre.Description)), /*#__PURE__*/_react.default.createElement(_Card.default.Text, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/"
@@ -52375,7 +52369,10 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           user = _this$state.user,
           history = _this$state.history;
       return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_Row.default, {
-        className: "main-view justify-content-md-center"
+        className: "main-view justify-content-center",
+        style: {
+          gap: "2rem"
+        }
       }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
@@ -52389,13 +52386,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
             className: "main-view"
           });
           return movies.map(function (m) {
-            return /*#__PURE__*/_react.default.createElement(_Col.default, {
-              md: 3,
-              key: m._id,
-              className: "d-flex"
-            }, /*#__PURE__*/_react.default.createElement(_movieCard.MovieCard, {
+            return /*#__PURE__*/_react.default.createElement(_movieCard.MovieCard, {
               movieData: m
-            }));
+            });
           });
         }
       }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -52606,7 +52599,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1052" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "18726" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
