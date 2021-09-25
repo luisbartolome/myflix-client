@@ -13,7 +13,6 @@ import { Container } from 'react-bootstrap';
 
 //React-router-DOM components
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
