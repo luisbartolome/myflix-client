@@ -159,7 +159,7 @@ export class ProfileView extends React.Component {
 
     return (
       <Row className="profile-view">
-        <Card className="profile-card">
+        <Card bg="dark" className="profile-card">
           <h2>Your Favorites Movies</h2>
           <Card.Body>
             {FavoriteMovies.length === 0 && <div className="text-center">Empty.</div>}

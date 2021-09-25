@@ -57,7 +57,7 @@ export class MainView extends React.Component {
   }
 // Log Out
 
-  onLoggedOut() {
+  logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.setState({
@@ -156,7 +156,7 @@ render() {
 
 return (
       <Router>
-        <Header/>
+        <Header logout={() => this.logout()}/>
           <Row className="main-view justify-content-center" style={{ gap:"2rem"}}>
 
           <Route exact path="/" render={() => {
@@ -165,7 +165,7 @@ return (
             </Col>
             if (movies.length === 0) return <div className="main-view" />;
             return movies.map(m => (
-              <MovieCard movieData={m}/>
+              <MovieCard movieData={m} key={m._id}/>
             ))
           }} />
 
@@ -177,10 +177,8 @@ return (
           }} />
 
           <Route path="/profile" render={() => {
-            if (!user) return <Col>
-              <ProfileView />
-            </Col>
-          }} />
+            if (user) return <ProfileView/>
+            }} />
 
           <Route path="/movies/:movieId" render={({ match, history }) => {
             if (!user) return <Col>

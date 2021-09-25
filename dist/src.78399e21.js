@@ -51688,11 +51688,6 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function Header(props) {
-  var logout = function logout() {
-    props.onLogOut();
-  };
-
-  console.log('the header just rendered');
   return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar, {
     expand: "lg",
     bg: "dark",
@@ -51712,7 +51707,9 @@ function Header(props) {
     as: _reactRouterDom.Link,
     to: "/profile"
   }, "Profile"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav.Link, {
-    onClick: logout
+    as: _reactRouterDom.Link,
+    to: "/",
+    onClick: props.logout
   }, "Logout"))));
 }
 
@@ -52153,6 +52150,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
         className: "profile-view"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
+        bg: "dark",
         className: "profile-card"
       }, /*#__PURE__*/_react.default.createElement("h2", null, "Your Favorites Movies"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, FavoriteMovies.length === 0 && /*#__PURE__*/_react.default.createElement("div", {
         className: "text-center"
@@ -52391,8 +52389,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     } // Log Out
 
   }, {
-    key: "onLoggedOut",
-    value: function onLoggedOut() {
+    key: "logout",
+    value: function logout() {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       this.setState({
@@ -52507,7 +52505,11 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           movies = _this$state.movies,
           user = _this$state.user,
           history = _this$state.history;
-      return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_Row.default, {
+      return /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_header.default, {
+        logout: function logout() {
+          return _this5.logout();
+        }
+      }), /*#__PURE__*/_react.default.createElement(_Row.default, {
         className: "main-view justify-content-center",
         style: {
           gap: "2rem"
@@ -52526,7 +52528,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           });
           return movies.map(function (m) {
             return /*#__PURE__*/_react.default.createElement(_movieCard.MovieCard, {
-              movieData: m
+              movieData: m,
+              key: m._id
             });
           });
         }
@@ -52541,7 +52544,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         path: "/profile",
         render: function render() {
-          if (!user) return /*#__PURE__*/_react.default.createElement(_Col.default, null, /*#__PURE__*/_react.default.createElement(_profileView.ProfileView, null));
+          if (user) return /*#__PURE__*/_react.default.createElement(_profileView.ProfileView, null);
         }
       }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
         path: "/movies/:movieId",

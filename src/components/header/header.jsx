@@ -4,11 +4,9 @@ import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function Header(props) { 
-  const logout = ()=> {
-    props.onLogOut()
+ 
 
-  }
-  console.log('the header just rendered')
+  
   
   return(
       
@@ -23,13 +21,13 @@ function Header(props) {
     <Nav className="me-auto">
       <Nav.Link as={Link}to="/">Home</Nav.Link>
       <Nav.Link as={Link}to="/profile">Profile</Nav.Link>
-      <Nav.Link onClick={logout}>Logout</Nav.Link>
+      <Nav.Link as={Link} to="/" onClick={props.logout}>Logout</Nav.Link>
      </Nav>
      </Container>
   </Navbar>
     
   );
+  
   }
-
 
 export default Header;
