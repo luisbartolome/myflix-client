@@ -51700,7 +51700,7 @@ function Header(props) {
   }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Navbar.Brand, {
     as: _reactRouterDom.Link,
     to: "/"
-  }, "My Flix App"), /*#__PURE__*/_react.default.createElement("Form-group", null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.FormControl, {
+  }, "My Flix App"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.FormControl, {
     type: "text",
     placeholder: "Search"
   })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Nav, {
@@ -52738,7 +52738,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "24118" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1084" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

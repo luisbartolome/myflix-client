@@ -17,9 +17,9 @@ function Header(props) {
     <Navbar.Brand as={Link}to="/">
       My Flix App
     </Navbar.Brand>
-    <Form-group>
+    <Form.Group>
       <FormControl type="text" placeholder="Search" />
-    </Form-group>
+    </Form.Group>
     <Nav className="me-auto">
       <Nav.Link as={Link}to="/">Home</Nav.Link>
       <Nav.Link as={Link}to="/profile">Profile</Nav.Link>
