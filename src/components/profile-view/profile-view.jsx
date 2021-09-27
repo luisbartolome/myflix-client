@@ -9,13 +9,13 @@ export class ProfileView extends React.Component {
     super();
 
     this.state = {
-      Name: null,
-      Username: null,
-      Password: null,
-      Email: null,
-      Birthdate: null,
+      Username: '',
+      Password: '',
+      Email: '',
+      Birthdate: '',
       FavoriteMovies: [],
       validated: null,
+      isLoading: true
     };
   }
 
@@ -26,8 +26,6 @@ export class ProfileView extends React.Component {
     }
   }
 
-
-  // get user method
   getUser(token) {
     const username = localStorage.getItem('user');
     axios.get(`https://backend-myflix1.herokuapp.com/users/${username}`, {
@@ -35,9 +33,7 @@ export class ProfileView extends React.Component {
     })
       .then((response) => {
         this.setState({
-          Name: response.data.Name,
           Username: response.data.Username,
-          Password: response.data.Password,
           Email: response.data.Email,
           Birthdate: response.data.Birthdate,
           FavoriteMovies: response.data.FavoriteMovies,
@@ -65,11 +61,11 @@ export class ProfileView extends React.Component {
       .catch(function (error) {
         console.log(error);
       })
-    // .then(() => window.location.reload());
   }
 
-  handleUpdate(e, newName, newUsername, newPassword, newEmail, newBirthdate) {
+  handleUpdate(e, newUsername, newPassword, newEmail, newBirthdate) {
     this.setState({
+      ...this.state,
       validated: null,
     });
 
@@ -90,7 +86,6 @@ export class ProfileView extends React.Component {
     axios.put(`https://backend-myflix1.herokuapp.com/users/${username}`, {
       headers: { Authorization: `Bearer ${token}` },
       data: {
-        Name: newName ? newName : this.state.Name,
         Username: newUsername ? newUsername : this.state.Username,
         Password: newPassword ? newPassword : this.state.Password,
         Email: newEmail ? newEmail : this.state.Email,
@@ -100,7 +95,6 @@ export class ProfileView extends React.Component {
       .then((response) => {
         alert('Saved Changes');
         this.setState({
-          Name: response.data.Name,
           Username: response.data.Username,
           Password: response.data.Password,
           Email: response.data.Email,
@@ -113,24 +107,12 @@ export class ProfileView extends React.Component {
         console.log(error);
       });
   }
-  setName(input) {
-    this.Name = input;
-  }
 
-  setUsername(input) {
-    this.Username = input;
-  }
-
-  setPassword(input) {
-    this.Password = input;
-  }
-
-  setEmail(input) {
-    this.Email = input;
-  }
-
-  setBirthdate(input) {
-    this.Birthdate = input;
+  handleChange(input) {
+    this.setState({
+      ...this.state,
+      [input.name]: input.value
+    })
   }
 
   handleDeleteUser(e) {
@@ -188,33 +170,28 @@ export class ProfileView extends React.Component {
 
           <h1 className="section">Update Profile</h1>
           <Card.Body>
-            <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(e, this.Name, this.Username, this.Password, this.Email, this.Birthdate)}>
-
-              <Form.Group controlId="formName">
-                <Form.Label className="form-label">Name</Form.Label>
-                <Form.Control type="text" placeholder="Change Name" onChange={(e) => this.setName(e.target.value)} />
-              </Form.Group>
+            <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(e, this.Username, this.Password, this.Email, this.Birthdate)}>
 
               <Form.Group controlId="formBasicUsername">
                 <Form.Label className="form-label">Username</Form.Label>
-                <Form.Control type="text" placeholder="Change Username" onChange={(e) => this.setUsername(e.target.value)} />
+                <Form.Control type="text" placeholder="Change Username" name="Username" value={this.state.Username} onChange={(e) => this.handleChange(e.target)} />
               </Form.Group>
 
               <Form.Group controlId="formBasicPassword">
                 <Form.Label className="form-label">
-                  Password<span className="required">*</span>
+                  Password
                 </Form.Label>
-                <Form.Control type="password" placeholder="New Password" onChange={(e) => this.setPassword(e.target.value)} />
+                <Form.Control type="password" placeholder="New Password" name="Password" value={this.state.Password} onChange={(e) => this.handleChange(e.target)} />
               </Form.Group>
 
               <Form.Group controlId="formBasicEmail">
                 <Form.Label className="form-label">Email</Form.Label>
-                <Form.Control type="email" placeholder="Change Email" onChange={(e) => this.setEmail(e.target.value)} />
+                <Form.Control type="email" placeholder="Change Email" name="Email" value={this.state.Email} onChange={(e) => this.handleChange(e.target)} />
               </Form.Group>
 
               <Form.Group controlId="formBasicBirthday">
                 <Form.Label className="form-label">Birthdate</Form.Label>
-                <Form.Control type="date" placeholder="Change Birthdate" onChange={(e) => this.setBirthdate(e.target.value)} />
+                <Form.Control type="date" placeholder="Change Birthdate" name="Birthdate" value={this.state.Birthdate} onChange={(e) => this.handleChange(e.target)} />
               </Form.Group>
 
               <Button variant='danger' type="submit">

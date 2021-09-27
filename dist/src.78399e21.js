@@ -51734,6 +51734,8 @@ var _reactBootstrap = require("react-bootstrap");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _reactRouterDom = require("react-router-dom");
+
 require("./director-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -51801,7 +51803,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
         className: "label font-weight-bold"
       }, "Born: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, director.Birth)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null, /*#__PURE__*/_react.default.createElement(Link, {
+      }, director.Birth)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
         variant: "secondary"
@@ -51826,7 +51828,7 @@ DirectorView.propTypes = {
   }),
   onBackClick: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","prop-types":"../node_modules/prop-types/index.js","./director-view.scss":"components/director-view/director-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","prop-types":"../node_modules/prop-types/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","./director-view.scss":"components/director-view/director-view.scss"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -51948,6 +51950,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -51980,13 +51988,13 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this);
     _this.state = {
-      Name: null,
-      Username: null,
-      Password: null,
-      Email: null,
-      Birthdate: null,
+      Username: '',
+      Password: '',
+      Email: '',
+      Birthdate: '',
       FavoriteMovies: [],
-      validated: null
+      validated: null,
+      isLoading: true
     };
     return _this;
   }
@@ -51999,8 +52007,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       if (accessToken !== null) {
         this.getUser(accessToken);
       }
-    } // get user method
-
+    }
   }, {
     key: "getUser",
     value: function getUser(token) {
@@ -52014,9 +52021,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         }
       }).then(function (response) {
         _this2.setState({
-          Name: response.data.Name,
           Username: response.data.Username,
-          Password: response.data.Password,
           Email: response.data.Email,
           Birthdate: response.data.Birthdate,
           FavoriteMovies: response.data.FavoriteMovies
@@ -52043,17 +52048,16 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         _this3.componentDidMount();
       }).catch(function (error) {
         console.log(error);
-      }); // .then(() => window.location.reload());
-
+      });
     }
   }, {
     key: "handleUpdate",
-    value: function handleUpdate(e, newName, newUsername, newPassword, newEmail, newBirthdate) {
+    value: function handleUpdate(e, newUsername, newPassword, newEmail, newBirthdate) {
       var _this4 = this;
 
-      this.setState({
+      this.setState(_objectSpread(_objectSpread({}, this.state), {}, {
         validated: null
-      });
+      }));
       var form = e.currentTarget;
 
       if (form.checkValidity() === false) {
@@ -52074,7 +52078,6 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           Authorization: "Bearer ".concat(token)
         },
         data: {
-          Name: newName ? newName : this.state.Name,
           Username: newUsername ? newUsername : this.state.Username,
           Password: newPassword ? newPassword : this.state.Password,
           Email: newEmail ? newEmail : this.state.Email,
@@ -52084,7 +52087,6 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         alert('Saved Changes');
 
         _this4.setState({
-          Name: response.data.Name,
           Username: response.data.Username,
           Password: response.data.Password,
           Email: response.data.Email,
@@ -52098,29 +52100,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "setName",
-    value: function setName(input) {
-      this.Name = input;
-    }
-  }, {
-    key: "setUsername",
-    value: function setUsername(input) {
-      this.Username = input;
-    }
-  }, {
-    key: "setPassword",
-    value: function setPassword(input) {
-      this.Password = input;
-    }
-  }, {
-    key: "setEmail",
-    value: function setEmail(input) {
-      this.Email = input;
-    }
-  }, {
-    key: "setBirthdate",
-    value: function setBirthdate(input) {
-      this.Birthdate = input;
+    key: "handleChange",
+    value: function handleChange(input) {
+      this.setState(_objectSpread(_objectSpread({}, this.state), {}, _defineProperty({}, input.name, input.value)));
     }
   }, {
     key: "handleDeleteUser",
@@ -52198,39 +52180,31 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         validated: validated,
         className: "update-form",
         onSubmit: function onSubmit(e) {
-          return _this5.handleUpdate(e, _this5.Name, _this5.Username, _this5.Password, _this5.Email, _this5.Birthdate);
+          return _this5.handleUpdate(e, _this5.Username, _this5.Password, _this5.Email, _this5.Birthdate);
         }
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
-        controlId: "formName"
-      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Label, {
-        className: "form-label"
-      }, "Name"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
-        type: "text",
-        placeholder: "Change Name",
-        onChange: function onChange(e) {
-          return _this5.setName(e.target.value);
-        }
-      })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formBasicUsername"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Label, {
         className: "form-label"
       }, "Username"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
         type: "text",
         placeholder: "Change Username",
+        name: "Username",
+        value: this.state.Username,
         onChange: function onChange(e) {
-          return _this5.setUsername(e.target.value);
+          return _this5.handleChange(e.target);
         }
       })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formBasicPassword"
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Label, {
         className: "form-label"
-      }, "Password", /*#__PURE__*/_react.default.createElement("span", {
-        className: "required"
-      }, "*")), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
+      }, "Password"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
         type: "password",
         placeholder: "New Password",
+        name: "Password",
+        value: this.state.Password,
         onChange: function onChange(e) {
-          return _this5.setPassword(e.target.value);
+          return _this5.handleChange(e.target);
         }
       })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formBasicEmail"
@@ -52239,8 +52213,10 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, "Email"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
         type: "email",
         placeholder: "Change Email",
+        name: "Email",
+        value: this.state.Email,
         onChange: function onChange(e) {
-          return _this5.setEmail(e.target.value);
+          return _this5.handleChange(e.target);
         }
       })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formBasicBirthday"
@@ -52249,8 +52225,10 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, "Birthdate"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Control, {
         type: "date",
         placeholder: "Change Birthdate",
+        name: "Birthdate",
+        value: this.state.Birthdate,
         onChange: function onChange(e) {
-          return _this5.setBirthdate(e.target.value);
+          return _this5.handleChange(e.target);
         }
       })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
         variant: "danger",
@@ -52745,7 +52723,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "18777" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "26983" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
