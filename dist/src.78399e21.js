@@ -51777,7 +51777,8 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           director = _this$props.director,
           onBackClick = _this$props.onBackClick;
-      return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Container, {
+      return /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card, {
+        bg: "dark",
         fluid: true,
         className: "DirectorView"
       }, /*#__PURE__*/_react.default.createElement("div", {
@@ -52741,7 +52742,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1084" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1043" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

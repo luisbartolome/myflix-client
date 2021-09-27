@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import './director-view.scss';
 
@@ -7,7 +7,7 @@ export class DirectorView extends React.Component {
   render() {
     const { director, onBackClick } = this.props;
     return (
-      <Container fluid className="DirectorView">
+      <Card bg="dark" fluid className="DirectorView">
         <div className="director-view">
           <div className="director-name">
             <span className="label font-weight-bold">Director: </span>
@@ -31,7 +31,7 @@ export class DirectorView extends React.Component {
             Back
           </Button>
         </div>
-      </Container>
+      </Card>
     );
   }
 }
