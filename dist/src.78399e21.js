@@ -51801,13 +51801,16 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
         className: "label font-weight-bold"
       }, "Born: "), /*#__PURE__*/_react.default.createElement("span", {
         className: "value"
-      }, director.Birth)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
-        variant: "info",
-        size: "sm",
+      }, director.Birth)), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null, /*#__PURE__*/_react.default.createElement(Link, {
+        to: "/"
+      }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+        variant: "secondary"
+      }, "Main View"))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Text, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+        variant: "primary",
         onClick: function onClick() {
-          onBackClick(null);
+          return onBackClick(null);
         }
-      }, "Back")));
+      }, "Back"))));
     }
   }]);
 
@@ -52742,7 +52745,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1043" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "18777" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -21,15 +21,17 @@ export class DirectorView extends React.Component {
             <span className="label font-weight-bold">Born: </span>
             <span className="value">{director.Birth}</span>
           </div>
-          <Button
-            variant="info"
-            size="sm"
-            onClick={() => {
-              onBackClick(null);
-            }}
-          >
-            Back
-          </Button>
+          <Card.Text>
+            <Link to={`/`}>
+              <Button variant="secondary">Main View</Button>
+            </Link>
+          </Card.Text>
+
+          <Card.Text>
+            <Button variant="primary" onClick={() => onBackClick(null)}>
+              Back
+            </Button>
+          </Card.Text>
         </div>
       </Card>
     );
