@@ -14,8 +14,7 @@ export class ProfileView extends React.Component {
       Email: '',
       Birthdate: '',
       FavoriteMovies: [],
-      validated: null,
-      isLoading: true
+      validated: null
     };
   }
 
@@ -35,7 +34,7 @@ export class ProfileView extends React.Component {
         this.setState({
           Username: response.data.Username,
           Email: response.data.Email,
-          Birthdate: response.data.Birthdate,
+          Birthdate: response.data.Birthday.slice(0, 10), // Strip off time part
           FavoriteMovies: response.data.FavoriteMovies,
         });
       })
@@ -84,14 +83,14 @@ export class ProfileView extends React.Component {
     const username = localStorage.getItem('user');
 
     axios.put(`https://backend-myflix1.herokuapp.com/users/${username}`, {
-      headers: { Authorization: `Bearer ${token}` },
-      data: {
         Username: newUsername ? newUsername : this.state.Username,
         Password: newPassword ? newPassword : this.state.Password,
         Email: newEmail ? newEmail : this.state.Email,
-        Birthdate: newBirthdate ? newBirthdate : this.state.Birthdate,
-      },
-    })
+        Birthday: newBirthdate ? newBirthdate : this.state.Birthdate,
+      }, {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
       .then((response) => {
         alert('Saved Changes');
         this.setState({
@@ -101,7 +100,6 @@ export class ProfileView extends React.Component {
           Birthdate: response.data.Birthdate,
         });
         localStorage.setItem('user', this.state.Username);
-        window.open(`/users/${username}`, '_self');
       })
       .catch(function (error) {
         console.log(error);

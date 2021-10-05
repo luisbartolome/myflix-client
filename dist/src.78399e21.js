@@ -51993,8 +51993,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       Email: '',
       Birthdate: '',
       FavoriteMovies: [],
-      validated: null,
-      isLoading: true
+      validated: null
     };
     return _this;
   }
@@ -52023,7 +52022,8 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         _this2.setState({
           Username: response.data.Username,
           Email: response.data.Email,
-          Birthdate: response.data.Birthdate,
+          Birthdate: response.data.Birthday.slice(0, 10),
+          // Strip off time part
           FavoriteMovies: response.data.FavoriteMovies
         });
       }).catch(function (error) {
@@ -52074,14 +52074,13 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       var username = localStorage.getItem('user');
 
       _axios.default.put("https://backend-myflix1.herokuapp.com/users/".concat(username), {
+        Username: newUsername ? newUsername : this.state.Username,
+        Password: newPassword ? newPassword : this.state.Password,
+        Email: newEmail ? newEmail : this.state.Email,
+        Birthday: newBirthdate ? newBirthdate : this.state.Birthdate
+      }, {
         headers: {
           Authorization: "Bearer ".concat(token)
-        },
-        data: {
-          Username: newUsername ? newUsername : this.state.Username,
-          Password: newPassword ? newPassword : this.state.Password,
-          Email: newEmail ? newEmail : this.state.Email,
-          Birthdate: newBirthdate ? newBirthdate : this.state.Birthdate
         }
       }).then(function (response) {
         alert('Saved Changes');
@@ -52094,7 +52093,6 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         });
 
         localStorage.setItem('user', _this4.state.Username);
-        window.open("/users/".concat(username), '_self');
       }).catch(function (error) {
         console.log(error);
       });
@@ -52723,7 +52721,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "26983" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1078" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
