@@ -52228,10 +52228,10 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         onChange: function onChange(e) {
           return _this5.handleChange(e.target);
         }
-      })), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+      })), /*#__PURE__*/_react.default.createElement("h3", null, "Update your Account"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
         variant: "danger",
         type: "submit"
-      }, "Update"), /*#__PURE__*/_react.default.createElement("h3", null, "Delete your Account"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+      }, "Update Account"), /*#__PURE__*/_react.default.createElement("h3", null, "Delete your Account"), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Card.Body, null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
         variant: "danger",
         onClick: function onClick(e) {
           return _this5.handleDeleteUser(e);
@@ -52721,7 +52721,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1068" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1751" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

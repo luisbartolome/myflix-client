@@ -191,11 +191,10 @@ export class ProfileView extends React.Component {
                 <Form.Label className="form-label">Birthdate</Form.Label>
                 <Form.Control type="date" placeholder="Change Birthdate" name="Birthdate" value={this.state.Birthdate} onChange={(e) => this.handleChange(e.target)} />
               </Form.Group>
-
+              <h3>Update your Account</h3>
               <Button variant='danger' type="submit">
-                Update
+                Update Account
               </Button>
-
               <h3>Delete your Account</h3>
               <Card.Body>
                 <Button variant='danger' onClick={(e) => this.handleDeleteUser(e)}>
