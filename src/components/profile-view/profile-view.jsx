@@ -25,18 +25,23 @@ export class ProfileView extends React.Component {
     }
   }
 
+  updateDetails(details) { 
+    this.setState({
+      Username: details.Username,
+      Email: details.Email,
+      Birthdate: details.Birthday.slice(0, 10), // Strip off time part
+      FavoriteMovies: details.FavoriteMovies,
+      Password: '' // Always clear password field after updates
+    });
+  }
+
   getUser(token) {
     const username = localStorage.getItem('user');
     axios.get(`https://backend-myflix1.herokuapp.com/users/${username}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
-        this.setState({
-          Username: response.data.Username,
-          Email: response.data.Email,
-          Birthdate: response.data.Birthday.slice(0, 10), // Strip off time part
-          FavoriteMovies: response.data.FavoriteMovies,
-        });
+        this.updateDetails(response.data)
       })
       .catch(function (error) {
         console.log(error);
@@ -62,7 +67,7 @@ export class ProfileView extends React.Component {
       })
   }
 
-  handleUpdate(e, newUsername, newPassword, newEmail, newBirthdate) {
+  handleUpdate(e) {
     this.setState({
       ...this.state,
       validated: null,
@@ -83,22 +88,17 @@ export class ProfileView extends React.Component {
     const username = localStorage.getItem('user');
 
     axios.put(`https://backend-myflix1.herokuapp.com/users/${username}`, {
-        Username: newUsername ? newUsername : this.state.Username,
-        Password: newPassword ? newPassword : this.state.Password,
-        Email: newEmail ? newEmail : this.state.Email,
-        Birthday: newBirthdate ? newBirthdate : this.state.Birthdate,
+        Username: this.state.Username,
+        Password: this.state.Password,
+        Email: this.state.Email,
+        Birthday: this.state.Birthdate,
       }, {
         headers: { Authorization: `Bearer ${token}` },
       }
     )
       .then((response) => {
         alert('Saved Changes');
-        this.setState({
-          Username: response.data.Username,
-          Password: response.data.Password,
-          Email: response.data.Email,
-          Birthdate: response.data.Birthdate,
-        });
+        this.updateDetails(response.data);
         localStorage.setItem('user', this.state.Username);
       })
       .catch(function (error) {
@@ -168,7 +168,7 @@ export class ProfileView extends React.Component {
 
           <h1 className="section">Update Profile</h1>
           <Card.Body>
-            <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(e, this.Username, this.Password, this.Email, this.Birthdate)}>
+            <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(e)}>
 
               <Form.Group controlId="formBasicUsername">
                 <Form.Label className="form-label">Username</Form.Label>

@@ -52008,6 +52008,19 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "updateDetails",
+    value: function updateDetails(details) {
+      this.setState({
+        Username: details.Username,
+        Email: details.Email,
+        Birthdate: details.Birthday.slice(0, 10),
+        // Strip off time part
+        FavoriteMovies: details.FavoriteMovies,
+        Password: '' // Always clear password field after updates
+
+      });
+    }
+  }, {
     key: "getUser",
     value: function getUser(token) {
       var _this2 = this;
@@ -52019,13 +52032,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
           Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
-        _this2.setState({
-          Username: response.data.Username,
-          Email: response.data.Email,
-          Birthdate: response.data.Birthday.slice(0, 10),
-          // Strip off time part
-          FavoriteMovies: response.data.FavoriteMovies
-        });
+        _this2.updateDetails(response.data);
       }).catch(function (error) {
         console.log(error);
       });
@@ -52052,7 +52059,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleUpdate",
-    value: function handleUpdate(e, newUsername, newPassword, newEmail, newBirthdate) {
+    value: function handleUpdate(e) {
       var _this4 = this;
 
       this.setState(_objectSpread(_objectSpread({}, this.state), {}, {
@@ -52074,10 +52081,10 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       var username = localStorage.getItem('user');
 
       _axios.default.put("https://backend-myflix1.herokuapp.com/users/".concat(username), {
-        Username: newUsername ? newUsername : this.state.Username,
-        Password: newPassword ? newPassword : this.state.Password,
-        Email: newEmail ? newEmail : this.state.Email,
-        Birthday: newBirthdate ? newBirthdate : this.state.Birthdate
+        Username: this.state.Username,
+        Password: this.state.Password,
+        Email: this.state.Email,
+        Birthday: this.state.Birthdate
       }, {
         headers: {
           Authorization: "Bearer ".concat(token)
@@ -52085,12 +52092,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }).then(function (response) {
         alert('Saved Changes');
 
-        _this4.setState({
-          Username: response.data.Username,
-          Password: response.data.Password,
-          Email: response.data.Email,
-          Birthdate: response.data.Birthdate
-        });
+        _this4.updateDetails(response.data);
 
         localStorage.setItem('user', _this4.state.Username);
       }).catch(function (error) {
@@ -52178,7 +52180,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         validated: validated,
         className: "update-form",
         onSubmit: function onSubmit(e) {
-          return _this5.handleUpdate(e, _this5.Username, _this5.Password, _this5.Email, _this5.Birthdate);
+          return _this5.handleUpdate(e);
         }
       }, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formBasicUsername"
@@ -52721,7 +52723,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1751" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1061" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
