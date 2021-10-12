@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
-import { MovieCard } from '../movie-card/movie-card';
+import  MoviesList from '../movies-list/movies-list';
 import { MovieView } from '../movie-view/movie-view';
 import  Header  from '../header/header';
 import { DirectorView } from '../director-view/director-view';
@@ -152,7 +152,7 @@ setSelectMovie(newSelectedMovie){
 }
 
 render() {
-    const { movies, user, history } = this.state;
+    const { movies, user } = this.state;
 
 return (
       <Router>
@@ -164,9 +164,8 @@ return (
               <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
             if (movies.length === 0) return <div className="main-view" />;
-            return movies.map(m => (
-              <MovieCard movieData={m} key={m._id}/>
-            ))
+            return <MoviesList movies={movies}/>;
+            
           }} />
 
           <Route path="/register" render={() => {
